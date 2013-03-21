@@ -1,6 +1,6 @@
 <?php
 require_once "lib/nusoap.php";
-$client = new nusoap_client("http://localhost:8284/categoryList.php?wsdl", true);
+$client = new nusoap_client("http://localhost:8284/category_ws.php?wsdl", true);
 
 $error = $client->getError();
 if ($error) {
@@ -20,7 +20,7 @@ else {
         echo "<h2>Error</h2><pre>" . $error . "</pre>";
     }
     else {
-        echo "<h2>Books</h2><pre>";
+        echo "<h2>CategoryList</h2><pre>";
         echo json_encode($result);
         echo "</pre>";
     }
