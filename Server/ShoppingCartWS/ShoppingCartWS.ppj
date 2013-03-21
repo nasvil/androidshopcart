@@ -1,5 +1,5 @@
 [PHPEdProject]
-RelativeRootDir=ShoppingCartWS
+RelativeRootDir=..\ShoppingCartWS
 URL=
 MappingRemoteDir=
 MappingPublishingRoot=
@@ -11,7 +11,7 @@ HideFiles=
 HideDirs=CVS;.svn
 EncoderEnabled=0
 MappingRemote0=
-MappingLocal0=C:\Users\chuongnguyen\AppData\Roaming\NuSphere\PhpED\projects\ShoppingCartWS
+MappingLocal0=C:\Users\chuongnguyen\AppData\Roaming\NuSphere\PhpED\projects\androidshopcart\Server\ShoppingCartWS
 MappingURL0=
 MappingPublishing0=
 MappingCount=1
@@ -26,7 +26,7 @@ CvsHost=
 CvsRoot=
 CvsModule=
 CvsUser=
-CvsPassw=ld/6yerniQOPExUZW8c9z/t7SXRaw9ARVq9sHfJYNWUOR2T1yvPAwcbfXM0CCzgZfndUpTojsHE2D0x9cjsoyQ==
+CvsPassw=9XVPQ8qHqaOvszW5e2ddbxsbaZQ6t5x7pp5gd2qqBMNON2hfgsOMK6Y/PC3iaxh5Xtc0BRqDkNEWbyzdUpsIKQ==
 CvsUseUtf8=0
 CvsCVSROOT=:pserver:@
 IncPath_count=0
