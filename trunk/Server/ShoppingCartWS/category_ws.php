@@ -19,14 +19,24 @@ $arrayCategory =  array('ID' => array('name' => 'ID','type' => 'xsd:string'),
     }
     $server = new soap_server();
     $server->configureWSDL("categoryList", "urn:categoryList");
-    $server->wsdl->addComplexType('Category','complexType','struct','all','',$arrayCategory);
+    $server->wsdl->addComplexType(  'Query_ws',
+                                    'complexType',
+                                    'struct',
+                                    'all',
+                                    '',
+                                    array(
+                                    'content' => array('name' => 'content', 'type' => 'xsd:string'),
+                                    'type' => array('name' => 'type', 'type' => 'xsd:string')
+                                    )
+                                    );
+    $server->wsdl->addComplexType(  'Category','complexType','struct','all','',$arrayCategory);
     $server->wsdl->addComplexType(  'CategoryList',
                                     'complexType',
                                     'array','','SOAP-ENC:Array',
                                      array(),array(
                                      array('ref'=>'SOAP-ENC:arrayType','wsdl:arrayType'=>'tns:Category[]')),'tns:Category');
     $server->register("getCategoryList",
-    array("content" => "xsd:string"),
+    array("query_ws" => "tns:Query_ws"),
     array("return" => "tns:CategoryList"),
     "urn:categoryList",
     "urn:categoryList#getCategoryList",
