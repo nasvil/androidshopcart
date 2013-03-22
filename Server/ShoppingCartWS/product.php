@@ -7,7 +7,8 @@ if ($error) {
     echo "<h2>Constructor error</h2><pre>" . $error . "</pre>";
 }
 
-$result = $client->call("getProd", array("category" => "hoatinhyeu"));
+$query_ws = array('content'=>'categoryList','type'=>'X');
+$result = $client->call("getProd", array("query_ws" => $query_ws));
 
 if ($client->fault) {
     echo "<h2>Fault</h2><pre>";
@@ -20,7 +21,7 @@ else {
         echo "<h2>Error</h2><pre>" . $error . "</pre>";
     }
     else {
-        echo "<h2>Product List</h2><pre>";
+        echo "<h2>Product List by Category</h2><pre>";
         echo json_encode($result);
         echo "</pre>";
     }
