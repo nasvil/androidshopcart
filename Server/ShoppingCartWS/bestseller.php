@@ -1,6 +1,6 @@
 <?php
 require_once "lib/nusoap.php";
-$client = new nusoap_client("http://127.0.0.1:8284/product_ws.php?wsdl", true);
+$client = new nusoap_client("http://127.0.0.1:8284/bestseller_ws.php?wsdl", true);
 
 $error = $client->getError();
 if ($error) {
