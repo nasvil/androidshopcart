@@ -4,8 +4,8 @@ require_once "lib/nusoap.php";
 $arrayCategory =  array('ID' => array('name' => 'ID','type' => 'xsd:string'),
                         'Name' => array('name' => 'Name','type' => 'xsd:string'));
                         
-    function getCategoryList($query_ws){
-         if (($query_ws['content']=='categoryList') && ($query_ws['type']=='X' )) {
+    function getCategoryList($content){
+         if ($content == 'categoryList') {
                 //Connect database and assign to main_array
                 $array1 = array("ID"=>"1","Name"=>"Hoa tinh yeu");
                 $array2 = array("ID"=>"2","Name"=>"Ngay cua mum");
@@ -17,16 +17,6 @@ $arrayCategory =  array('ID' => array('name' => 'ID','type' => 'xsd:string'),
     }
     $server = new soap_server();
     $server->configureWSDL("categoryList", "urn:categoryList");
-    $server->wsdl->addComplexType(  'Query_ws',
-                                    'complexType',
-                                    'struct',
-                                    'all',
-                                    '',
-                                    array(
-                                    'content' => array('name' => 'content', 'type' => 'xsd:string'),
-                                    'type' => array('name' => 'type', 'type' => 'xsd:string')
-                                    )
-                                    );
     $server->wsdl->addComplexType(  'Category','complexType','struct','all','',$arrayCategory);
     $server->wsdl->addComplexType(  'CategoryList',
                                     'complexType',
@@ -34,7 +24,7 @@ $arrayCategory =  array('ID' => array('name' => 'ID','type' => 'xsd:string'),
                                      array(),array(
                                      array('ref'=>'SOAP-ENC:arrayType','wsdl:arrayType'=>'tns:Category[]')),'tns:Category');
     $server->register("getCategoryList",
-    array("query_ws" => "tns:Query_ws"),
+    array("content" => "xsd:string"),
     array("return" => "tns:CategoryList"),
     "urn:categoryList",
     "urn:categoryList#getCategoryList",

@@ -7,8 +7,8 @@ require_once "lib/nusoap.php";
                             'ShortDes'=> array('name' => 'Name','type' => 'xsd:string'));
     
 
-    function getProd($category) {
-        if ($category == "hoatinhyeu") {
+    function getProd($query_ws) {
+        if (($query_ws['content']=='categoryList') && ($query_ws['type']=='X' )) {    
             //Get database and fetch out to main_array
             $array1 = array("ID"=>"1","Name"=>"Hoa Hong","Image"=>"image\image.jpg","ShortDes"=>"Description");
             $array2 = array("ID"=>"2","Name"=>"Hoa Cuc","Image"=>"image\image.jpg","ShortDes"=>"Description");
@@ -20,7 +20,16 @@ require_once "lib/nusoap.php";
 
     $server = new soap_server();
     $server->configureWSDL("productlist", "urn:productlist");
-
+    $server->wsdl->addComplexType(  'Query_ws',
+                                    'complexType',
+                                    'struct',
+                                    'all',
+                                    '',
+                                    array(
+                                    'content' => array('name' => 'content', 'type' => 'xsd:string'),
+                                    'type' => array('name' => 'type', 'type' => 'xsd:string')
+                                    )
+                                    );
     $server->wsdl->addComplexType('Product','complexType','struct','all','',$complexProduct);
     $server->wsdl->addComplexType(  'ProductList',
                                     'complexType',
@@ -29,7 +38,7 @@ require_once "lib/nusoap.php";
                                     array('ref'=>'SOAP-ENC:arrayType','wsdl:arrayType'=>'tns:Product[]')),'tns:Product');
 
     $server->register("getProd",
-        array("category" => "xsd:string"),
+        array("query_ws" => "tns:Query_ws"),
         array("return" => "tns:ProductList"),
         "urn:productlist",
         "urn:productlist#getProd",
