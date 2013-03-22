@@ -13,9 +13,7 @@ $arrayCategory =  array('ID' => array('name' => 'ID','type' => 'xsd:string'),
                 $main_array[1]= $array2;
             return $main_array;
         }
-        else {
-            return "No category is listed";
-        }
+
     }
     $server = new soap_server();
     $server->configureWSDL("categoryList", "urn:categoryList");
