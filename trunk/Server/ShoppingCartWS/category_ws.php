@@ -4,9 +4,8 @@ require_once "lib/nusoap.php";
 $arrayCategory =  array('ID' => array('name' => 'ID','type' => 'xsd:string'),
                         'Name' => array('name' => 'Name','type' => 'xsd:string'));
                         
-    function getCategoryList($content){
-
-         if ($content == "categoryList") {
+    function getCategoryList($query_ws){
+         if (($query_ws['content']=='categoryList') && ($query_ws['type']=='X' )) {
                 //Connect database and assign to main_array
                 $array1 = array("ID"=>"1","Name"=>"Hoa tinh yeu");
                 $array2 = array("ID"=>"2","Name"=>"Ngay cua mum");
@@ -34,6 +33,7 @@ $arrayCategory =  array('ID' => array('name' => 'ID','type' => 'xsd:string'),
     "rpc",
     "encoded",
     "Get category list");
+    
     if ( !isset( $HTTP_RAW_POST_DATA ) ) $HTTP_RAW_POST_DATA =file_get_contents( 'php://input' ); 
     $server->service($HTTP_RAW_POST_DATA);
     
