@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<resources xmlns:tools="http://schemas.android.com/tools" tools:ignore="MissingTranslation,MissingTranslation,MissingTranslation,MissingTranslation,MissingTranslation">
+
+    <string name="app_name" tools:ignore="MissingTranslation">Shop Flower</string>
+
+    <!-- URLs -->
+    <string name="root_url">file:///android_asset/www/index.html</string>
+    <string name="setting">setting</string>
+    <string name="ok">OK</string>
+    <string name="cancel">Cancel</string>
+    <string name="loadingMes">Loading</string>
+
+</resources>
