@@ -1,0 +1,20 @@
+<resources>
+   <color name="white">#FFFFFF</color>
+   <color name="black">#FF000000</color>
+   <color name="gainsboro">#FFdcdcdc</color>
+   <color name="whitesmoke">#FFf5f5f5</color>
+   <color name="pink">#FFffc0cb</color>
+   <color name="yellow">#FFffff00</color>
+   <color name="burlywood">#FFdeb887</color>
+   <color name="grey">#FF808080</color>
+   <color name="faded_black">#CC000000</color>
+   <color name="very_faded_black">#77000000</color>
+   <color name="blue">#6699C2</color>
+   <color name="entity_hdr_bg">#FFEDEDED</color>
+   <color name="sheen">#07000000</color>
+   <color name="line">#FFD9D9D9</color>
+   <color name="info_btn">#FFF5F5F5</color>
+   <color name="info_line">#FFC4C4C4</color>
+   <color name="alert">#FF6EB536</color>
+   
+</resources>

@@ -1,0 +1,206 @@
+*{
+	-webkit-tap-highlight-color: rgba(0,0,0,0);
+	outline: none;
+	box-shadow: none;
+}
+input:focus,textarea:focus { -webkit-user-modify: read-write-plaintext-only; }
+input,textarea{
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0); and
+    -webkit-focus-ring-color:  rgba(0, 0, 0, 0);
+	}
+/*START MODIFY JQUERY MOBILE CSS*/
+.ui-fixed-hidden {
+	position: fixed;
+}
+.ui-content .ui-listview, .ui-panel-inner > .ui-listview, .ui-listview-filter-inset {
+    margin: -15px -15px 15px;
+}
+.ui-content .ui-listview:last-child, .ui-panel-inner > .ui-listview:last-child {
+	margin-bottom:-15px;
+}
+.ui-li-static.ui-li.li-parent-swiper{
+	padding:0px;
+}
+.ui-li-thumb{
+	width:80px;
+	height:80px;
+}
+.ui-popup-container {
+	position:fixed;
+}
+#category_page .ui-popup-container {
+	
+	top: 35% !important;
+}
+.ui-li-aside {
+	width:20%;
+}
+/*END MODIFY JQUERY MOBILE CSS*/
+.template{
+	display:none;
+}
+.swiper-container, .swiper-container .swiper-slide{
+	width: 640px;
+	height: 170px;
+	color: #fff;
+}
+.blue-slide{
+	background:blue;
+}
+.orange-slide{
+	background:orange;
+}
+.red-slide{
+	background:red;
+}
+#my-wrapper {
+    padding-top : 60px;
+}
+#my-wrapper form {
+    position : fixed;
+    top      : 58px;
+    left     : 15px;
+    width    : 100%;
+    z-index  : 5;
+	background: linear-gradient(#F0F0F0, #DDDDDD) repeat scroll 0 0 #EEEEEE;
+	display:none;
+}
+#filter_contain{
+	position: fixed;
+	width: 90%;
+	left: 5%;
+	top: 58px;
+}
+#filter_contain form{
+	background: #eee;
+}
+.detail-content{
+	display: inline-block;
+}
+.detail-img{
+	float: left;
+    width: 40%;
+}
+.detail-img img{
+	width:100%;
+}
+.detail-metadata{
+	float: right;
+    width: 58%;
+}
+.more-like-this-img{
+	width: 110px;
+	height: 120px;
+	float: left;
+}
+.more-like-this-img img{
+	width:100px;
+	height:80px;
+	margin-left: 5px;
+}
+.heading-category{
+	font-size:14px;
+}
+.des-category{
+	display: inline-block;
+	white-space: normal;
+}
+.ui-li-static.ui-li.ul-li-none{
+	padding:0;
+}
+.ui-li-static .android-ics.light .dwbc{
+	border-bottom:1px solid #dbdbdb;
+}
+.background{
+	width: 100%;
+	height: 100%;
+	position: absolute;
+	top: 0px;
+	left: 0px;
+	z-index: 9999;
+	background: gray;
+	opacity: 0.7;
+}
+.ui-text-right{
+	float:right;
+}
+.inline-block-display{
+	display:inline-block;
+	text-align:center;
+}
+.title-more{
+	text-align: center;
+	display: block;
+	font-weight: normal;
+	font-size: 12px;
+	height: 30px;
+	overflow: hidden;
+}
+.carousel-img{
+	width: 80%;
+	height: 80%;
+	margin: 10% 10% 0 10%;
+}
+.carousel-title{
+	margin: 0;
+	width: 95%;
+	margin-left: 5%;
+	color: black;
+	font-size: 10px;
+	text-align: center;
+}
+
+#exit_app{
+	width:100%;
+	position:fixed;
+	height:100%;
+	background:none;
+	top:0;
+	z-index: 9999;
+}
+#exit_button{
+	height:70px;
+	width:100%;
+	position:fixed;
+	bottom:0px;
+	background-image: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #A6ADB7), color-stop(100%, #3B3B3C));
+  	background-image: -webkit-linear-gradient(top, #A6ADB7 0%, #3B3B3C 100%);
+ 	background-image: -moz-linear-gradient(top, #A6ADB7 0%, #3B3B3C 100%);
+  	background-image: -o-linear-gradient(top, #A6ADB7 0%, #3B3B3C 100%);
+  	background-image: linear-gradient(top, #A6ADB7 0%, #3B3B3C 100%);
+  	margin:0 auto;
+  	text-align: center;
+  	padding: 0;
+}
+.exit_icon{
+	background: url("../img/warning.png")no-repeat;
+	height:80px;
+	display:inline-block;
+	margin-top: 13px;
+	background-size: 50px;
+}
+.exit_text{
+	color: white;
+    font-size: 24px;
+    padding-left: 55px;
+    padding-top: 8px;
+    text-align:left;
+    white-space: nowrap;
+}
+.background_img{
+	position:fixed;
+	width:100%;
+	height:100%;
+	display:block;
+	overflow:auto;
+	z-index:9991;
+}
+.background_img div{
+	width:100%;
+}
+.zoom-btn{
+	position:fixed;
+	left:0px;
+	top:50px
+}
+#zoom_in{top:0px;}

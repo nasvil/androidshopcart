@@ -1,0 +1,395 @@
+<!--  --><!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1"> 
+		<title>index</title>
+		<link rel="stylesheet" href="css/jquery.mobile-1.3.0.css" />
+		<link rel="stylesheet" href="css/idangerous.swiper.css">
+		<link rel="stylesheet"  href="css/mobiscroll.custom-2.4.5.min.css"/>
+		<link rel="stylesheet" href="css/css.css" />
+		
+		<script src="js/lib/jquery-1.8.2.min.js"></script>
+		<script src="js/lib/idangerous.swiper-1.8.min.js"></script>
+		<script src="js/lib/jquery.mobile-1.3.0.min.js"></script>
+		<script src="js/lib/mobiscroll.custom-2.4.5.min.js"></script>
+
+		<script src="js/Settings.js"></script>
+		<script src="js/Cookies.js"></script>
+		<script src="js/LocalStores.js"></script>
+		<script src="js/Popup.js"></script>
+		<script src="js/Cache.js"></script>
+		<script src="js/Cart.js"></script>
+		<script src="js/DataHelper.js"></script>
+		<script src="js/Xhr.js"></script>
+		<script src="js/Utility.js"></script>
+		<script src="js/UtilityMobile.js"></script>
+		<script src="js/UtilityTablet.js"></script>
+		<script src="js/Carousel.js"></script>
+		<script src="js/CarouselMobile.js"></script>
+		<script src="js/CarouselTablet.js"></script>
+		<script src="js/Main.js"></script>
+		
+	</head>
+	<body>
+		<!-- MAIN PAGE -->
+		<div id="main_page" data-role="page" data-theme="c">
+ 
+			<div data-theme="c" data-role="header" data-position="fixed" data-tap-toggle="false">
+				<h1>Home</h1>
+				<a href="#nav-panel" class="ui-btn-right" data-icon="bars" data-iconpos="notext" data-corners="true" data-shadow="true" data-iconshadow="true" data-wrapperels="span" title="Navigation" data-corners="false"></a>
+			</div>
+			 
+			<div data-theme="c" data-role="content"> 
+				<ul id="main-promotion" data-role="listview">
+					<li class="li-parent-swiper">
+						<div class="swiper-container swiper-v" style="width:100%">
+							<div class="swiper-wrapper">
+								<div class="swiper-slide blue-slide">
+									<h2>Vertical Mode</h2>
+									<p>Swipe to the Top or to the Bottom</p>
+								</div>
+								<div class="swiper-slide red-slide">
+									<h2>Slide 2</h2>
+									<p>Keep swiping</p>
+								</div>
+								<div class="swiper-slide orange-slide">
+									<h2>Slide 3</h2>
+									<p>The last one</p>
+								</div>
+							</div>
+						</div>
+					</li>
+				</ul>
+				<ul id="main-list-category" data-role="listview" data-divider-theme="d">
+					
+				</ul>
+			</div>
+			<!-- /panel -->
+			<div data-role="panel" data-display="overlay" data-position-fixed="true" data-theme="c" id="nav-panel" data-position="right">
+				<ul data-role="listview" data-theme="c" class="nav-search">
+					<li data-icon="delete"><a href="#" data-rel="close">Close menu</a></li>
+					<li><a href="#panel-fixed-page2">Accessibility</a></li>
+					<li><a href="#panel-fixed-page2">Accordions</a></li>
+					<li><a href="#panel-fixed-page2">AJAX navigation model</a></li>
+					<li><a href="#panel-fixed-page2">Anatomy of a page</a></li>
+				</ul>
+			</div><!-- /panel -->
+			
+			<div data-theme="c" data-role="footer" data-position="fixed" data-tap-toggle="false">
+				<div data-role="navbar" data-iconpos="right">
+					<ul>
+						<li><a id="redirect_main" data-icon="home" class="ui-btn-active">Home</a></li>
+						<li><a id="redirect_search" data-icon="search">Search</a></li>
+						<li><a id="redirect_cart" data-icon="grid">Cart</a></li>
+					</ul>
+				</div>		
+			</div>
+		</div>
+		<!-- END MAIN PAGE -->
+		
+		<!-- CATEGORY PAGE -->
+		<div id="category_page" data-role="page" data-theme="c"  idCategory="[ID]">
+ 
+			<div data-theme="c" data-role="header" data-position="fixed" data-tap-toggle="false">
+				<a href="#main_page" data-role="button" data-transition="flip" data-corners="false" data-shadow="false">Back</a>
+				
+				<h1>category</h1>
+				<a href="#nav-panel" class="ui-btn-right" data-icon="bars" data-iconpos="notext" data-corners="true" data-shadow="true" data-iconshadow="true" data-wrapperels="span" title="Navigation" data-corners="false"></a>
+			</div>
+			 
+			<div data-theme="c" data-role="content" id="content">
+				<div id="my-wrapper">
+					<ul id="listview-ul" data-role="listview" data-corners="false" data-split-icon="info" data-split-theme="d" data-inset="true" data-filter="true" data-filter-placeholder="Filter Content ...">
+						
+					</ul>
+				</div>
+				<div data-role="popup" id="purchase" data-theme="d" data-overlay-theme="b" class="ui-content" style="max-width:340px; padding-bottom:2em;">
+					<h3>Purchase Album?</h3>
+					<p>Your download will begin immediately on your mobile device when you purchase. Your download will begin immediately on your mobile device when you purchase. Your download will begin immediately on your mobile device when you purchase. Your download will begin immediately on your mobile device when you purchase. Your download will begin immediately on your mobile device when you purchase. Your download will begin immediately on your mobile device when you purchase.</p>
+					<a id="purchase_add" href="#" data-role="button" data-corners="false" data-theme="b" data-icon="check" data-inline="true" data-mini="true">Buy: <span class="price">$10.99</span></a>
+					<a href="#" data-role="button" data-corners="false" data-rel="back" data-inline="true" data-mini="true">Cancel</a>
+				</div>
+			</div>
+			<!-- /panel -->
+			<div data-role="panel" data-display="overlay" data-position-fixed="true" data-theme="c" id="nav-panel" data-position="right">
+				<ol data-role="listview" data-theme="c" class="nav-search">
+					<li data-icon="delete" data-rel="close">Close menu</li>
+					<li data-icon="none">Search</li>
+				</ol>
+			</div><!-- /panel -->
+			
+			<div data-theme="c" data-role="footer" data-position="fixed" data-tap-toggle="false">
+				<div data-role="navbar" data-iconpos="right">
+					<ul>
+						<li><a id="redirect_main" data-icon="home" class="ui-btn-active">Home</a></li>
+						<li><a id="redirect_search" data-icon="search">Search</a></li>
+						<li><a id="redirect_cart" data-icon="grid">Cart</a></li>
+					</ul>
+				</div>		
+			</div>
+		</div>
+		<!-- END CATEGORY PAGE -->
+		
+		<!-- PRODUCT PAGE -->
+		<div id="product_page" data-role="page" data-theme="c" idProduct="[ID]" idcategory="[IDCATE]" linkShare="[SHARE]" price="[PRICE]" productName="[NAME]">
+			<div data-theme="c" data-role="header" data-position="fixed" data-tap-toggle="false">
+				<a href="#category_page" data-role="button" data-transition="flip" data-corners="false" data-shadow="false">Back</a>
+				<h1>product</h1>
+				<a href="#nav-panel" class="ui-btn-right" data-icon="bars" data-iconpos="notext" data-corners="true" data-shadow="true" data-iconshadow="true" data-wrapperels="span" title="Navigation" data-corners="false"></a>
+			</div>
+			 
+			<div data-theme="c" data-role="content">
+				<ul id="product_detail" data-role="listview" data-divider-theme="d" data-icon="false">
+				</ul>
+				<ul id="product_detail_more" data-role="listview" data-icon="false" class="inline-block-display">
+					<li class="ui-li-static more-like-this-item inline-block-display">
+						<div id="item-wrapper" class="inline-block-display">
+						</div>
+					</li>
+					<li id="more-like-this-product" class="ui-li-static more-like-this-item inline-block-display">
+						More
+					</li>
+				</ul>
+			</div>
+			<!-- /panel -->
+			<div data-role="panel" data-display="overlay" data-position-fixed="true" data-theme="c" id="nav-panel" data-position="right">
+				<ul data-role="listview" data-theme="c" class="nav-search">
+					<li data-icon="delete"><a href="#" data-rel="close">Close menu</a></li>
+					<li><a href="#panel-fixed-page2">Accessibility</a></li>
+					<li><a href="#panel-fixed-page2">Accordions</a></li>
+					<li><a href="#panel-fixed-page2">AJAX navigation model</a></li>
+					<li><a href="#panel-fixed-page2">Anatomy of a page</a></li>
+					<li><a href="#panel-fixed-page2">Animation events</a></li>
+				</ul>
+			</div><!-- /panel -->
+			
+			<div data-theme="c" data-role="footer" data-position="fixed" data-tap-toggle="false">
+				<div data-role="navbar" data-iconpos="right">
+					<ul>
+						<li><a id="redirect_main" data-icon="home" class="ui-btn-active">Home</a></li>
+						<li><a id="redirect_search" data-icon="search">Search</a></li>
+						<li><a id="redirect_cart" data-icon="grid">Cart</a></li>
+					</ul>
+				</div>		
+			</div>
+		</div>
+		<!-- END PRODUCT PAGE -->
+		
+		<!-- CART PAGE -->
+		<div id="cart_page" data-role="page" data-theme="c">
+ 
+			<div data-theme="c" data-role="header" data-position="fixed" data-tap-toggle="false">
+				<a href="#category_page" data-role="button" data-transition="flip" data-corners="false" data-shadow="false">Back</a>
+				<h1>product</h1>
+				<a href="#nav-panel" class="ui-btn-right" data-icon="bars" data-iconpos="notext" data-corners="true" data-shadow="true" data-iconshadow="true" data-wrapperels="span" title="Navigation" data-corners="false"></a>
+			</div>
+			 
+			<div data-theme="c" data-role="content">
+				<ul data-role="listview" data-divider-theme="d" data-icon="false">
+					<li class="ui-li-static">
+						<table data-role="table" id="table-custom" data-mode="columntoggle" class="ui-body-d ui-shadow table-stripe ui-responsive" data-column-btn-theme="c" data-column-btn-text="Columns to display..." data-column-popup-theme="c">
+							<thead>
+								<tr class="ui-bar-d">
+									<th data-priority="critical">Name</th>
+									<th data-priority="1">Quantity</th>
+									<th data-priority="1">Price</th>
+									<th data-priority="1">N/A</th>
+								</tr>
+							</thead>
+							<tbody>
+								
+							</tbody>
+						</table>
+					</li>
+					<li data-role="list-divider">Gift</li>
+					<li class="ui-li-static">
+						<fieldset data-role="controlgroup">
+							<input type="checkbox" name="checkbox-mini-0" id="checkbox-mini-0" data-mini="true">
+							<label for="checkbox-mini-0">Chocolate</label>
+						
+							<input type="checkbox" name="checkbox-mini-1" id="checkbox-mini-1" data-mini="true">
+							<label for="checkbox-mini-1">Bear</label>
+						</fieldset>
+					</li>
+					<li data-role="list-divider">Delivery</li>
+					<li class="ui-li-static">
+						<fieldset data-role="controlgroup" data-mini="true">
+							<input type="radio" name="radio-mini" id="radio-mini-1" value="choice-1" checked="checked" />
+							<label for="radio-mini-1">Normal</label>
+						 
+							<input type="radio" name="radio-mini" id="radio-mini-2" value="choice-2" />
+							<label for="radio-mini-2">Exactly Day</label>
+						 
+							<input type="radio" name="radio-mini" id="radio-mini-3" value="choice-3" />
+							<label for="radio-mini-3">Exactly Hour</label>
+						</fieldset>
+					</li>
+					<li data-role="list-divider">Time Delivery</li>
+					<li class="ui-li-static">
+						<input type="text" id="time-delivery" name="time-delivery" placeholder="Enter time here ..."/>
+					</li>
+					<li data-role="list-divider">Address And Message</li>
+					<li class="ui-li-static">
+						<input type="text" id="address" placeholder="Enter address here ..."/>
+						<div data-role="fieldcontain">
+							<textarea cols="40" rows="8" name="textarea" id="textarea" placeholder="Enter message here ..."></textarea>
+						</div>
+					</li>
+					<li data-role="list-divider">Action</li>
+					<li class="ui-li-static ul-li-none">
+						<div data-role="none">
+							<div class="android-ics light dw-top" style="height:44px">
+								<div class="dw-persp" style="height: 44px;">
+									<div class="dw dwbg" style="width: 100%; ">
+										<div class="dwwr">
+											<div class="dwbc">
+												<span class="dwbw dwb-s" style="width:100%"><span class="dwb">Publish</span></span>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</li>
+					
+				</ul>
+			</div>
+			<!-- /panel -->
+			<div data-role="panel" data-display="overlay" data-position-fixed="true" data-theme="c" id="nav-panel" data-position="right">
+				<ul data-role="listview" data-theme="c" class="nav-search">
+					<li data-icon="delete"><a href="#" data-rel="close">Close menu</a></li>
+					<li><a href="#panel-fixed-page2">Accessibility</a></li>
+					<li><a href="#panel-fixed-page2">Accordions</a></li>
+					<li><a href="#panel-fixed-page2">AJAX navigation model</a></li>
+					<li><a href="#panel-fixed-page2">Anatomy of a page</a></li>
+					<li><a href="#panel-fixed-page2">Animation events</a></li>
+					<li><a href="#panel-fixed-page2">Automatic listview dividers</a></li>
+					<li><a href="#panel-fixed-page2">Buttons</a></li>
+				</ul>
+			</div><!-- /panel -->
+			
+			<div data-theme="c" data-role="footer" data-position="fixed" data-tap-toggle="false">
+				<div data-role="navbar" data-iconpos="right">
+					<ul>
+						<li><a id="redirect_main" data-icon="home" class="ui-btn-active">Home</a></li>
+						<li><a id="redirect_search" data-icon="search">Search</a></li>
+						<li><a id="redirect_cart" data-icon="grid">Cart</a></li>
+					</ul>
+				</div>		
+			</div>
+		</div>
+		<!-- END CART PAGE -->
+		<div id="exit_app" class="template">
+            <ul id="exit_button">
+                <li class="exit_icon">
+                    <div class="exit_text"><span class="label_close_app">Exit App?</span></div>
+                </li>
+	    	</ul>
+        </div>
+		<!-- TEMPLATE -->
+		<div id="filter_contain" class="template"></div>
+		<div id="carousel_item" class="template">
+			<li class="category-item-title" idCategory="[ID]" data-role="list-divider">
+				<span>[NAME]</span> <span class="ui-text-right">View All</span>
+			</li>
+			<li class="li-parent-swiper category-item-list" id="product_in_category_[ID]">
+				<div class="swiper-container" id="product_in_category_swiper_[ID]" style="width:100%">
+					<div class="swiper-wrapper">
+						
+					</div>
+				</div>
+			</li>
+		</div>
+		<div id="carousel_slide_item" class="template">
+			<div class="swiper-slide" idProduct="[ID]">
+				<img class="carousel-img" src="[IMG]">
+				<h3 class="carousel-title">[TITLE]</h3>
+			</div>
+		</div>
+		<div id="category_item_template"  class="template">
+			<li class="li-parent-swiper ui-li-static">
+				<a href="#" id="show-product-detail" idProduct="[ID]">
+					<img src="[IMG]">
+					<h2 class="heading-category">[TITLE]</h2>
+					<p class="des-category">[DES]</p>
+					<p class="ui-li-aside"><strong>$</strong><strong>[PRICE]</strong></p>
+				</a>
+				<a href="#" id="show-popup-info">Purchase item</a>
+			</li>
+		</div>
+		<div id="category_item_more_template"  class="template">
+			<li class="li-parent-swiper ui-li-static">
+				<a id="btnMore" idCategory="[IDCATE]" href="#" data-role="button" data-corners="false" data-inline="true">More</a>
+			</li>
+		</div>
+		<div id="trigger_click_item" class="template">
+			<a href="#product_page" data-transition="flip">trigger</a>
+			<a href="#purchase" data-rel="popup" data-position-to="window" data-transition="pop">Purchase item</a>
+			<a href="#category_page" data-transition="flip">trigger</a>
+			<a href="#main_page" data-transition="flip">trigger</a>
+			<a href="#cart_page" data-transition="flip">trigger</a>
+			<a href="#search_page" data-transition="flip">trigger</a>
+		</div>
+		<div class="template background">
+			
+		</div>
+		<div class="template background_img">
+			<div>
+				<img width="100%" src="img/slider/1.jpg">
+			</div>
+			<a href="#" data-role="button" data-corners="false" data-inline="true" class="zoom-btn" data-role="button" id="zoom_out">ZOOM OUT</a> 
+			<a href="#" data-role="button" data-corners="false" data-inline="true" class="zoom-btn" data-role="button" id="zoom_in">ZOOM IN</a>
+		</div>
+		<div id="product_metadata" class="template">
+			<li class="ui-li-static">
+				<div class="detail-content" data-role="none">
+					<div class="detail-img">
+						<img src="[IMG]">
+					</div>
+					<div class="detail-metadata">
+						<h2 class="heading-category">[TITLE]</h2>
+						<p class="des-category">[DESC]</p>
+						<p class="ui-li-aside"><strong>$</strong><strong>[PRICE]</strong></p></a>
+					</div>
+				</div>
+			</li>
+		</div>
+		<div id="product_option" class="template">
+			<li data-role="list-divider">Action</li>
+			<li class="ui-li-static ul-li-none">
+				<div data-role="none">
+					<div class="android-ics light dw-top" style="height:44px">
+						<div class="dw-persp" style="height: 44px;">
+							<div class="dw dwbg" style="width: 100%; ">
+								<div class="dwwr">
+									<div class="dwbc">
+										<span class="dwbw dwb-s"><span class="dwb">Add To Cart</span></span>
+										<span class="dwbw dwb-c"><span class="dwb">Share</span></span>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</li>
+			<li><a href="#">More Like This</a></li>
+		</div>
+		<div id="product_more" class="template">
+			<div class="more-like-this-img" id="show-product-detail" idProduct="[ID]">
+				<img src="[IMG]">
+				<span class="title-more">[TITLE]</span>
+			</div>
+		</div>
+		<div id="cart_item" class="template" data-role="none">
+			<tr>
+				<td><a id="show-product-detail" href="#" idProduct="[ID]">[NAME]</a></td>
+				<td>[QUANTITY]</td>
+				<td>[PRICE]</td>
+				<td><a id="remove-product-from-cart" href="">Remove</a></td>
+			</tr>
+		</div>
+			
+		<!-- END TEMPLATE -->
+	</body>
+</html>
