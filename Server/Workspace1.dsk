@@ -1,8 +1,8 @@
 [Files]
-File0=C:\Users\chuongnguyen\AppData\Roaming\NuSphere\PhpED\projects\androidshopcart\Server\ShoppingCartWS\detailProduct_ws.php
+File0=C:\Users\chuongnguyen\AppData\Roaming\NuSphere\PhpED\projects\androidshopcart\Server\demoSOAP\GuestManagementService.php
 IsActive0=1
 ZIndex1=0
-File1=C:\Users\chuongnguyen\AppData\Roaming\NuSphere\PhpED\projects\androidshopcart\Server\ShoppingCartWS\detailProduct.php
+File1=C:\Users\chuongnguyen\AppData\Roaming\NuSphere\PhpED\projects\androidshopcart\Server\ShoppingCartWS\detailProduct_ws.php
 IsActive1=0
 ZIndex0=1
 Files=2
@@ -14,5 +14,6 @@ bp_count=0
 value=LCw
 
 [watches]
-count=0
+expr_0=link
+count=1
 
