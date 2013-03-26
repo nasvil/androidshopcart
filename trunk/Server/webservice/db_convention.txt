@@ -1,11 +1,11 @@
-DROP PROCEDURE IF EXISTS getCategory;# MySQL returned an empty result set (i.e. zero rows).
-
-delimiter //
-CREATE PROCEDURE getCategory()
-begin
-	
-	SELECT category_id,name FROM gc_category_description;
-end//
+DELIMITER $$
+DROP PROCEDURE IF EXISTS getCategory$$
 # MySQL returned an empty result set (i.e. zero rows).
 
-delimiter ;
+CREATE PROCEDURE  getCategory()
+BEGIN
+SELECT category_id,name FROM gc_category_description;
+END $$
+# MySQL returned an empty result set (i.e. zero rows).
+
+DELIMITER ;
