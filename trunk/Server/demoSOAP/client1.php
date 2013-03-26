@@ -8,7 +8,10 @@
         echo "<h2>Constructor error</h2><pre>" . $error . "</pre>";
     }
 
-    $result = $client->call("addGuest", array("content" => "addGuest"));
+    //$query_ws = array('name'=>'categoryList','address'=>'X','age'=>'6');
+    //$result = $client->call("addGuest", array("content" => $query_ws)); 
+    //$result = $client->call("deleteGuest", array("content" => "Chuong Nguyen")); 
+    $result = $client->call("getGuestDetails", array("name" => "Ta")); 
 
     if ($client->fault) {
         echo "<h2>Fault</h2><pre>";
