@@ -1,7 +1,9 @@
 [PHPEdWorkspace]
 Project0=C:\Users\chuongnguyen\AppData\Roaming\NuSphere\PhpED\projects\androidshopcart\Server\ShoppingCartWS\ShoppingCartWS.ppj
-ProjectCount=1
-ActiveProject=C:\Users\chuongnguyen\AppData\Roaming\NuSphere\PhpED\projects\androidshopcart\Server\ShoppingCartWS\ShoppingCartWS.ppj
+Project1=C:\Users\chuongnguyen\AppData\Roaming\NuSphere\PhpED\projects\androidshopcart\Server\demoSOAP\demoSOAP.ppj
+ProjectCount=2
+ActiveProject=C:\Users\chuongnguyen\AppData\Roaming\NuSphere\PhpED\projects\androidshopcart\Server\demoSOAP\demoSOAP.ppj
 [Expanded]
 Workspace1=1
 Workspace1:ShoppingCartWS=1
+Workspace1:demoSOAP=1
