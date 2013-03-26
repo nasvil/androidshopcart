@@ -20,8 +20,6 @@ require_once "lib/nusoap.php";
     }
     
     function getGuestDetails($name) {
-          //String sqlStatement = "SELECT * FROM GUEST_T WHERE name = '" + name + "'";
-
           $link = mysql_connect('localhost','root','vertrigo') or die('Cannot connect to the DB');
           mysql_select_db('hotel_reservation_db',$link) or die('Cannot select the DB');
           $sql= "SELECT * FROM GUEST_T WHERE name = '".$name. "'"; 
