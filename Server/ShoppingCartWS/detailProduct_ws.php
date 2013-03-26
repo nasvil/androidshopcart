@@ -12,11 +12,11 @@ require_once "lib/nusoap.php";
                                 
         $gift = array(          'name' => array('name' => 'name','type' => 'xsd:string'),
                                 'type' => array('name' => 'type','type' => 'xsd:string'),
-                                );
+                                'optionGift' => array('name' => 'optionGift','type' => 'tns:optionGift'));
                                 
         $delivery = array(      'name' => array('name' => 'name','type' => 'xsd:string'),
                                 'type' => array('name' => 'type','type' => 'xsd:string'),
-                                $optionDelivery);
+                                'optionDelivery' => array('name' => 'optionDelivery','type' => 'tns:$optionDelivery'));
                                 
         $timeDelivery = array(  'name' => array('name' => 'name','type' => 'xsd:string'),
                                 'type' => array('name' => 'type','type' => 'xsd:string'));
@@ -25,7 +25,6 @@ require_once "lib/nusoap.php";
                                         'type' => array('name' => 'type','type' => 'xsd:string'));
                                         
         $option = array($gift,$delivery,$timeDelivery,$addressAndMessage);
-
 
         $detailProduct =  array('ID' => array('name' => 'ID','type' => 'xsd:string'),
                                 'name' => array('name' => 'name','type' => 'xsd:string'),
