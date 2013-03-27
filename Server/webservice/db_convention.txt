@@ -9,3 +9,25 @@ END $$
 # MySQL returned an empty result set (i.e. zero rows).
 
 DELIMITER ;
+
+
+/////////////////Select procedure list
+
+select * 
+from information_schema.routines
+where routine_type = 'procedure' and routine_schema = 'your_db'
+
+
+DELIMITER $$
+DROP PROCEDURE IF EXISTS getProduct$$
+# MySQL returned an empty result set (i.e. zero rows).
+
+CREATE PROCEDURE  getProduct(productID INT)
+BEGIN
+SELECT gc_product_description.product_id, name, price, description, image
+FROM gc_product_description, gc_product
+WHERE gc_product_description.product_id = gc_product.product_id AND gc_product_description.product_id = productID;
+END $$
+# MySQL returned an empty result set (i.e. zero rows).
+
+DELIMITER ;
