@@ -1,38 +1,19 @@
 <?php
-require_once "lib/nusoap.php"; 
-
-
-        $optionDelivery = array('normal' => array('name' => 'normal','type' => 'xsd:string'),
-                                'exactlyday' => array('name' => 'exactlyday','type' => 'xsd:string'),
-                                'exactlyhour' => array('name' => 'exactlyhour','type' => 'xsd:string'));
+    include("../db.php"); 
+    include("../../config.php"); 
+    require_once "../lib/nusoap.php";
         
-        $optionGift = array(    'uncheck' => array('name' => 'uncheck','type' => 'xsd:string'),
-                                'card' => array('name' => 'card','type' => 'xsd:string'),
-                                'bear' => array('name' => 'bear','type' => 'xsd:string'));
-                                
-        $gift = array(          'name' => array('name' => 'name','type' => 'xsd:string'),
-                                'type' => array('name' => 'type','type' => 'xsd:string'),
-                                'optionGift' => array('name' => 'optionGift','type' => 'tns:optionGift'));
-                                
-        $delivery = array(      'name' => array('name' => 'name','type' => 'xsd:string'),
-                                'type' => array('name' => 'type','type' => 'xsd:string'),
-                                'optionDelivery' => array('name' => 'optionDelivery','type' => 'tns:$optionDelivery'));
-                                
-        $timeDelivery = array(  'name' => array('name' => 'name','type' => 'xsd:string'),
-                                'type' => array('name' => 'type','type' => 'xsd:string'));
-                                
-        $addressAndMessage = array(     'name' => array('name' => 'name','type' => 'xsd:string'),
-                                        'type' => array('name' => 'type','type' => 'xsd:string'));
-                                        
-        $option = array($gift,$delivery,$timeDelivery,$addressAndMessage);
-
+        $optionItem = array('option' => array('name' => 'option','type' => 'xsd:string'));
         $detailProduct =  array('ID' => array('name' => 'ID','type' => 'xsd:string'),
                                 'name' => array('name' => 'name','type' => 'xsd:string'),
                                 'image' => array('name' => 'image','type' => 'xsd:string'),
                                 'description' => array('name' => 'description','type' => 'xsd:string'),
                                 $option
                             );
-                            
+        //quatangkem;image;uncheck$imageUrl$0_card$imageUrl$3_chocolate$imageUrl$5_bear$imageUrl$7&&
+//        choncachgiaohang;radio;normal$giaohangthongthuong$5_exactlyday$giaochinhxacngay$10_exactlyhour$giaochinhxacgio$15&&
+//        timeDelivery;datetimePicker&&
+//        addressAndMsg;textField
         function getDetailProduct($productID){
              if ($productID == 'GD1') {
                     //Connect database and assign to main_array
@@ -40,9 +21,9 @@ require_once "lib/nusoap.php";
                     //$array2 = array("ID"=>"2","Name"=>"Ngay cua mum");
                     $oD = array('normal' => '1','exactlyday' => '11/11/2012','exactlyhour' =>'12/11/2012');       
                     $oG = array('uncheck' => '1','card' => '0','bear' =>'0');
-                    $g = array('name'=>'quà tặng kèm','type'=>'/image',$oG);
-                    $d = array('name'=>'chon cách giao hàng','type'=>'/image',$od);
-                    $t = array('name'=>'thời điểm giao hàng','type'=>'9:00 AM');
+                    $g = array('name'=>'qu? t??ng k?m','type'=>'/image',$oG);
+                    $d = array('name'=>'chon c?ch giao h?ng','type'=>'/image',$od);
+                    $t = array('name'=>'th??i ?i??m giao h?ng','type'=>'9:00 AM');
                     $a = array('name'=>'address','type'=>'I love you so much');
                     $dP = array($oD,$oG,$g,$d,$t,$a,$dP);
                     
