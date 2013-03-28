@@ -31,3 +31,12 @@ END $$
 # MySQL returned an empty result set (i.e. zero rows).
 
 DELIMITER ;
+//getOptionbyProductID
+SELECT product_id,option_id FROM `gc_product_option` where product_id = 270
+//getAddressAndMessagebyOptionID
+SELECT gd.option_id,gd.name,go.type  FROM gc_option_description gd,gc_option go WHERE gd.option_id = 6 gd.language_id = 1 and gd.option_id = go.option_id
+//getSubOptionbyOptionID
+SELECT Distinct(govd.name),gov.image FROM gc_option_value_description govd,gc_option_value gov WHERE govd.option_id = 14 and govd.language_id = 1 and govd.option_id = gov.option_id
+//getAllinfor
+SELECT gd.option_id,gd.name,go.type,gvo.name,gov.image  FROM gc_option_description gd,gc_option go,gc_option_value_description gvo,gc_option_value gov WHERE gd.option_id = 14 and gd.language_id = 1 and gd.option_id = go.option_id and gd.option_id = gvo.option_id and gov.option_id = gd.option_id
+ORDER BY `gvo`.`name` ASC
