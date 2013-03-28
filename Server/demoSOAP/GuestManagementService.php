@@ -61,7 +61,7 @@ require_once "lib/nusoap.php";
         "Insert Guest to database");
     //DeleteGuest
     $server->register("deleteGuest",
-        array("content" => "xsd:string"),
+        array("guestName" => "xsd:string"),
         array("return" => "xsd:string"),
         "urn:guestManagement",
         "urn:guestManagement#deleteGuest",
@@ -70,13 +70,13 @@ require_once "lib/nusoap.php";
         "Delete Guest from database");
     //getGuestDetails
     $server->register("getGuestDetails",
-        array("content" => "xsd:string"),
+        array("guestName" => "xsd:string"),
         array("return" => "tns:Guess"),
         "urn:guestManagement",
         "urn:guestManagement#getGuestDetails",
         "rpc",
         "encoded",
-        "Delete Guest from database");
+        "Get detail guest from database");
         
     if ( !isset( $HTTP_RAW_POST_DATA ) ) $HTTP_RAW_POST_DATA =file_get_contents( 'php://input' );                                      
     $server->service($HTTP_RAW_POST_DATA);

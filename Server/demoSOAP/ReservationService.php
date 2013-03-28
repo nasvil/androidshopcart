@@ -1,82 +1,88 @@
 <?php
 require_once "lib/nusoap.php";
     
-    $complexGuessDetail = array('name' => array('name' => 'name','type' => 'xsd:string'),
-                            'address' => array('name' => 'address','type' => 'xsd:string'),
-                            'age'=> array('name' => 'age','type' => 'xsd:int'));
+    $complexReservationDetail = array('res_id' => array('name' => 'res_id','type' => 'xsd:int'),
+                            'guest_name' => array('name' => 'guest_name','type' => 'xsd:string'),
+                            'room_no'=> array('name' => 'room_no','type' => 'xsd:int'),
+                            'reserved_from' => array('name' => 'reserved_from','type' => 'xsd:string'),
+                            'reserved_to' => array('name' => 'reserved_to','type' => 'xsd:string'));
+                            
     function addReservation($content){
   
           $link = mysql_connect('localhost','root','vertrigo') or die('Cannot connect to the DB');
           mysql_select_db('hotel_reservation_db',$link) or die('Cannot select the DB');
-          $sql="INSERT INTO guest_t(name, address, age)VALUES('".$content['name']."','".$content['address']."',".$content['age'].")";
+          $sql="INSERT INTO RESERVATION_T(res_id, guest_name, room_no,reserved_from,reserved_to)VALUES(".$content['res_id'].",'".$content['guest_name']."',".$content['room_no'].",'".$content['reserved_from']."','".$content['reserved_to']."')";
           $result=mysql_query($sql); 
           if($result){
-                return "Insert Guess successfully";
+                return "Insert Reservation successfully";
           }
           else {
-                return "The guest is existed in database";
+                return "Can not insert";
           }
           mysql_close(); 
     }
     
-    function getReservationDetails($name) {
+    function getReservationDetails($roomNo) {
           $link = mysql_connect('localhost','root','vertrigo') or die('Cannot connect to the DB');
           mysql_select_db('hotel_reservation_db',$link) or die('Cannot select the DB');
-          $sql= "SELECT * FROM GUEST_T WHERE name = '".$name. "'"; 
+          $sql= "SELECT * FROM RESERVATION_T WHERE room_no = ".$roomNo. ""; 
           $result=mysql_query($sql);
           $row = mysql_fetch_row($result);
           
-          return array( "name"=>$row[0],
-                        "address"=>$row[1],
-                        "age"=>$row[2]);
+          return array( "res_id"=>$row[0],
+                        "guest_name"=>$row[1],
+                        "room_no"=>$row[2],
+                        "reserved_from"=>$row[3],
+                        "reserved_to"=>$row[4]);
           
           mysql_close(); 
             
     }
-    function removeReservation($name){
+    
+    function removeReservation($reservationID){
             $link = mysql_connect('localhost','root','vertrigo') or die('Cannot connect to the DB');
             mysql_select_db('hotel_reservation_db',$link) or die('Cannot select the DB');
-            $sql="DELETE FROM GUEST_T WHERE name = '".$name."'";
+            $sql="DELETE FROM RESERVATION_T WHERE res_id = ".$reservationID."";
             $result=mysql_query($sql); 
             if($result){
-                return "Delete Guest successfully";
+                return "Delete Reservation successfully";
             }
             else {
-                return "The guest is existed in database";
+                return "The Reservation is not existed";
             }
             mysql_close();     
     }
     $server = new soap_server();
-    $server->configureWSDL("guestManagement", "urn:guestManagement");
-    $server->wsdl->addComplexType('Guess','complexType','struct','all','',$complexGuessDetail);
+    $server->configureWSDL("reservationService", "urn:reservationService");
+    $server->wsdl->addComplexType('Reservation','complexType','struct','all','',$complexReservationDetail);
     
-    //Insert Guest
-    $server->register("addGuest",
-        array("content" => "tns:Guess"),
+    //addReservation
+    $server->register("addReservation",
+        array("content" => "tns:Reservation"),
         array("return" => "xsd:string"),
-        "urn:guestManagement",
-        "urn:guestManagement#addGuest",
+        "urn:reservationService",
+        "urn:reservationService#addGuest",
         "rpc",
         "encoded",
         "Insert Guest to database");
-    //DeleteGuest
-    $server->register("deleteGuest",
-        array("content" => "xsd:string"),
+    //removeReservation
+    $server->register("removeReservation",
+        array("reservationID" => "xsd:int"),
         array("return" => "xsd:string"),
-        "urn:guestManagement",
-        "urn:guestManagement#deleteGuest",
+        "urn:reservationService",
+        "urn:reservationService#deleteGuest",
         "rpc",
         "encoded",
-        "Delete Guest from database");
-    //getGuestDetails
-    $server->register("getGuestDetails",
-        array("content" => "xsd:string"),
-        array("return" => "tns:Guess"),
-        "urn:guestManagement",
-        "urn:guestManagement#getGuestDetails",
+        "Delete Reservation from database");
+    //getReservationDetails
+    $server->register("getReservationDetails",
+        array("roomNo" => "xsd:int"),
+        array("return" => "tns:Reservation"),
+        "urn:reservationService",
+        "urn:reservationService#getGuestDetails",
         "rpc",
         "encoded",
-        "Delete Guest from database");
+        "Get detail Reservation from database");
         
     if ( !isset( $HTTP_RAW_POST_DATA ) ) $HTTP_RAW_POST_DATA =file_get_contents( 'php://input' );                                      
     $server->service($HTTP_RAW_POST_DATA);
