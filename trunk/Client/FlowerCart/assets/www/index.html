@@ -202,7 +202,7 @@
 							</tbody>
 						</table>
 					</li>
-					<li data-role="list-divider">Gift</li>
+					<!-- <li data-role="list-divider">Gift</li>
 					<li class="ui-li-static">
 						<fieldset data-role="controlgroup">
 							<input type="checkbox" name="checkbox-mini-0" id="checkbox-mini-0" data-mini="true">
@@ -211,7 +211,7 @@
 							<input type="checkbox" name="checkbox-mini-1" id="checkbox-mini-1" data-mini="true">
 							<label for="checkbox-mini-1">Bear</label>
 						</fieldset>
-					</li>
+					</li> -->
 					<li data-role="list-divider">Delivery</li>
 					<li class="ui-li-static">
 						<fieldset data-role="controlgroup" data-mini="true">
@@ -280,6 +280,50 @@
 			</div>
 		</div>
 		<!-- END CART PAGE -->
+		
+		<!-- SEARCH PAGE -->
+		<div id="search_page" data-role="page" data-theme="c">
+ 
+			<div data-theme="c" data-role="header" data-position="fixed" data-tap-toggle="false">
+				<a href="#main_page" data-role="button" data-transition="flip" data-corners="false" data-shadow="false">Back</a>
+				
+				<h1>category</h1>
+				<a href="#nav-panel" class="ui-btn-right" data-icon="bars" data-iconpos="notext" data-corners="true" data-shadow="true" data-iconshadow="true" data-wrapperels="span" title="Navigation" data-corners="false"></a>
+			</div>
+			 
+			<div data-theme="c" data-role="content" id="content">
+				<div id="my-wrapper">
+					<ul id="listview-ul" data-role="listview" data-corners="false" data-split-icon="info" data-split-theme="d" data-inset="true" data-filter="true" data-filter-placeholder="Filter Content ...">
+						
+					</ul>
+				</div>
+				<div data-role="popup" id="purchase" data-theme="d" data-overlay-theme="b" class="ui-content" style="max-width:340px; padding-bottom:2em;">
+					<h3>Purchase Album?</h3>
+					<p>Your download will begin immediately on your mobile device when you purchase. Your download will begin immediately on your mobile device when you purchase. Your download will begin immediately on your mobile device when you purchase. Your download will begin immediately on your mobile device when you purchase. Your download will begin immediately on your mobile device when you purchase. Your download will begin immediately on your mobile device when you purchase.</p>
+					<a id="purchase_add" href="#" data-role="button" data-corners="false" data-theme="b" data-icon="check" data-inline="true" data-mini="true">Buy: <span class="price">$10.99</span></a>
+					<a href="#" data-role="button" data-corners="false" data-rel="back" data-inline="true" data-mini="true">Cancel</a>
+				</div>
+			</div>
+			<!-- /panel -->
+			<div data-role="panel" data-display="overlay" data-position-fixed="true" data-theme="c" id="nav-panel" data-position="right">
+				<ol data-role="listview" data-theme="c" class="nav-search">
+					<li data-icon="delete" data-rel="close">Close menu</li>
+					<li data-icon="none">Search</li>
+				</ol>
+			</div><!-- /panel -->
+			
+			<div data-theme="c" data-role="footer" data-position="fixed" data-tap-toggle="false">
+				<div data-role="navbar" data-iconpos="right">
+					<ul>
+						<li><a id="redirect_main" data-icon="home" class="ui-btn-active">Home</a></li>
+						<li><a id="redirect_search" data-icon="search">Search</a></li>
+						<li><a id="redirect_cart" data-icon="grid">Cart</a></li>
+					</ul>
+				</div>		
+			</div>
+		</div>
+		<!-- END SEARCH PAGE -->
+		
 		<div id="exit_app" class="template">
             <ul id="exit_button">
                 <li class="exit_icon">
@@ -305,6 +349,7 @@
 			<div class="swiper-slide" idProduct="[ID]">
 				<img class="carousel-img" src="[IMG]">
 				<h3 class="carousel-title">[TITLE]</h3>
+				<h3 class="carousel-title">Price: $[PRICE]</h3>
 			</div>
 		</div>
 		<div id="category_item_template"  class="template">
@@ -374,6 +419,18 @@
 				</div>
 			</li>
 			<li><a href="#">More Like This</a></li>
+		</div>
+		<div id="product_option_gift" class="template">
+			<li data-role="list-divider">Gift</li>
+			<li class="ui-li-static">
+				<fieldset id="group-gift" data-role="controlgroup">
+					[GIFT_ITEM]
+				</fieldset>
+			</li>
+		</div>
+		<div id="product_option_gift_item" class="template">
+			<input type="checkbox" name="[ID]" id="[ID]" data-mini="true" value=[PRICE] alt="[IDP]">
+			<label for="[ID]">[NAME]</label>
 		</div>
 		<div id="product_more" class="template">
 			<div class="more-like-this-img" id="show-product-detail" idProduct="[ID]">
