@@ -1,0 +1,55 @@
+/* product detail */
+{
+	"value":{
+		"idCategory":"1",
+		"id":"1",
+		"price":"20",
+		"name":"Birthday Confetti",
+		"image":"img/slider/1.jpg",
+		"Description":"Môtả",
+		"more":"link",
+		"Gift":{
+			"name":"quà tặng kèm",
+			"type" : "image",
+			"option":{
+					"value":{"name":"card","image":"img/slider/1.jpg"},
+					"value":{"name":"chocolate","image":"img/slider/1.jpg"},
+					"value":{"name":"bear","image":"img/slider/1.jpg"}
+			}
+		}
+	}
+}
+/* product list */
+{
+	"value":{
+		"item":{"id":"13","name":"Birthday Confetti","image":"img/slider/1.jpg","shortDescription":"Môtả","price":"20"},
+		"item":{"id":"14","name":"Chantilly Pink Roses", "image":"img/slider/1.jpg","shortDescription":"Môtả","price":"20"},
+		"item":{"id":"15","name":"Coral Sunset ", "image":"img/slider/1.jpg","shortDescription":"Môtả","price":"20"},
+		"item":{"id":"16","name":"Birthday Confetti","image":"img/slider/1.jpg","shortDescription":"Môtả","price":"20"},
+		"item":{"id":"17","name":"Chantilly Pink Roses", "image":"img/slider/1.jpg","shortDescription":"Môtả","price":"20"},
+		"item":{"id":"18","name":"Coral Sunset ", "image":"img/slider/1.jpg","shortDescription":"Môtả","price":"20"},
+		"item":{"id":"19","name":"Birthday Confetti","image":"img/slider/1.jpg","shortDescription":"Môtả","price":"20"},
+		"item":{"id":"20","name":"Chantilly Pink Roses", "image":"img/slider/1.jpg","shortDescription":"Môtả","price":"20"},
+		"item":{"id":"21","name":"Coral Sunset ", "image":"img/slider/1.jpg","shortDescription":"Môtả","price":"20"},
+		"item":{"id":"22","name":"Birthday Confetti","image":"img/slider/1.jpg","shortDescription":"Môtả","price":"20"},
+		"item":{"id":"23","name":"Chantilly Pink Roses", "image":"img/slider/1.jpg","shortDescription":"Môtả","price":"20"},
+		"item":{"id":"24","name":"Coral Sunset ", "image":"img/slider/1.jpg","shortDescription":"Môtả","price":"20"}
+	}
+}
+/* category list */
+{
+	"value":{
+		"item":{"id": "1","name": "Hoa tình yêu"},
+		"item":{"id": "2","name": "Ngày của mẹ"},
+		"item":{"id": "3","name": "Quốc tế phụ nữ"}
+	}
+}
+
+/* best product*/
+{
+	"value":{
+		"item":{"id": "1","name": "Hoa lan","image":"img/slider/1.jpg","price":"20"},
+		"item":{"id": "2","name": "Hoa hồng","image":"img/slider/1.jpg","price":"20"},
+		"item":{"id": "3","name": "Hoa ly ly","image":"img/slider/1.jpg","price":"20"}
+	}
+}	
