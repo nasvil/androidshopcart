@@ -57,16 +57,16 @@ Utility.prototype.loadGeneralActions = function loadGeneralActions() {
 	$('#product_page .dwbw.dwb-s').live('click',function(){
 		var item = utility.newItem($('#product_page').attr('idProduct'), $('#product_page').attr('productName'), $('#product_page').attr('price'))
 			listGift = $('#product_page #group-gift input');
-		console.log(listGift);
 		cart.add({
 			item : item
 		});
 		
 		if(listGift && listGift !== undefined){
-			for(i in listGift.length){
-				if(listGift.eq(0).attr('checked') == "checked"){
-					var k = utility.newItem(listGift.eq(0).attr('title'),listGift.eq(0).parent().find('.ui-btn-text').html(),listGift.eq(0).attr('value'));
-					console.log(k);
+			console.log(listGift.length);
+			for(var i = 0; i < listGift.length; i++){
+				console.log('checked'+i+': '+listGift.eq(i).attr('checked'));
+				if(listGift.eq(i).attr('checked') == "checked"){
+					var k = utility.newItem(listGift.eq(i).attr('alt'),listGift.eq(i).parent().find('.ui-btn-text').html(),listGift.eq(i).attr('value'));
 					cart.add({
 						item : k
 					});
@@ -291,10 +291,11 @@ Utility.prototype.renderListCategoryToCarousel = function renderListCategoryToCa
 	utility.hideFilterItem();
 	utility.show();
 	utility.renderArrayObject({
-		url: "get-list-category",
+		// url: "http://ucommbieber.unl.edu/CORS/cors.php",
+		// url: flickerAPI,
+		url: 'http://flowercardvn.com/webservice/webservice.php?controller=category',
 	    isCachedLocal: false,
 	    data: "",
-		dataReturn:categoryList
 	},function(result){
 		for(i in result){
 			$('#main-list-category').append(utility.getCarouselItem(result[i]));
