@@ -103,18 +103,26 @@ Xhr.prototype.send = function get2(params) {
     }
     this.cancelled = false;
     
-    $.ajax({
-        url: url,
+	// getCORS('http://ucommbieber.unl.edu/CORS/cors.php', null, function(data){
+		// alert(data);
+	// });
+	getCORS('http://flowercardvn.com/webservice/webservice.php?controller=category', null, function(data){
+		console.log(data);
+		success(data);
+	});
+    /*$.ajax({
+        url: 'http://flowercardvn.com/webservice/webservice.php?controller=category',
         data: data,
         async: async,
         cache: cache,
-        type: type,
-        dataType: dataType,
+        type: "GET",
+        dataType: 'json',
         timeout: timeout,
-        headers: headers,
+		headers: headers,
         success: function (data) {
             // if (this.cancelled === true) {
             // } else {
+				console.log(data);
                 success(data);
             // }
         },
@@ -129,7 +137,7 @@ Xhr.prototype.send = function get2(params) {
                 // }
             // }
         }
-    });
+    });*/
 };
 
 /**

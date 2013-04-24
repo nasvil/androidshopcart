@@ -9,7 +9,7 @@ function Cart(){
 
 Cart.prototype.add = function add(params){
 	var item = params.item;
-	
+	console.log(item.ID);
 	try{
 		if(!cart.checkExit(item)){
 			cart.data.push(item);
@@ -19,6 +19,7 @@ Cart.prototype.add = function add(params){
 		cart.save();
 		return true;
 	}catch(err){
+		console.log('err: '+err);
 		return false;
 	}
 };
