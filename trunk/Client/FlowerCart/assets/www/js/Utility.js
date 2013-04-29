@@ -258,6 +258,43 @@ Utility.prototype.renderArrayObject = function renderArrayObject(params,success,
 	dataHelper.getAPIDataBasic(params,success,error);
 };
 
+Utility.prototype.getItemInASpot = function getItemInCategory(item) {
+	var template=$('#aspot_item').html();
+	template=template.replace('[ID]',item.id);
+	template=template.replace('[IMG]',item.image);
+	template=template.replace('[TITLE]',item.name);
+	template=template.replace('[DES]',item.shortDescription);
+	template=template.replace('[PRICE]',item.price);
+	return template;
+};
+
+Utility.prototype.renderASpot = function renderASpot(params,success,error) {
+	$('.swiper-aspot .swiper-wrapper').html("");
+	utility.hideFilterItem();
+	utility.show();
+	utility.renderArrayObject({
+		url: 'aspot-page',
+	    isCachedLocal: false,
+	    data: "",
+		dataReturn: productListBest,
+	},function(result){
+		for(i in result){
+			$('.swiper-aspot .swiper-wrapper').append(utility.getItemInASpot(result[i]));
+		}
+		// ('#main-promotion').listview('refresh');
+		carousel.drawCarousel({
+			elementName: '.swiper-aspot',
+			mode: carousel.horizontal,
+			slidesPerSlide: 1,
+			loop: true
+		});
+		
+		utility.hide();
+	},function(req, status, e){
+		
+	});
+};
+
 Utility.prototype.renderListProductInCategoryToCarousel = function renderListProductInCategoryToCarousel(params) {
 	var idCategory = params.idCategory,
 		slidesPerSlide = params.slidesPerSlide ? params.slidesPerSlide : carousel.numberItemOnPortrait(),
@@ -268,7 +305,7 @@ Utility.prototype.renderListProductInCategoryToCarousel = function renderListPro
 	utility.renderArrayObject({
 		url: "get-list-product-in-category",
 		isCachedLocal: false,
-		data: "",
+		data: "{idcategory:,"+idCategory+"}",
 		dataReturn:productList
 	},function(result){
 		for(i in result){
@@ -291,8 +328,6 @@ Utility.prototype.renderListCategoryToCarousel = function renderListCategoryToCa
 	utility.hideFilterItem();
 	utility.show();
 	utility.renderArrayObject({
-		// url: "http://ucommbieber.unl.edu/CORS/cors.php",
-		// url: flickerAPI,
 		url: 'http://flowercardvn.com/webservice/webservice.php?controller=category',
 	    isCachedLocal: false,
 	    data: "",

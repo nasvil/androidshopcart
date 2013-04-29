@@ -44,20 +44,9 @@
 			<div data-theme="c" data-role="content"> 
 				<ul id="main-promotion" data-role="listview">
 					<li class="li-parent-swiper">
-						<div class="swiper-container swiper-v" style="width:100%">
+						<div class="swiper-container swiper-aspot" style="width:100%">
 							<div class="swiper-wrapper">
-								<div class="swiper-slide blue-slide">
-									<h2>Vertical Mode</h2>
-									<p>Swipe to the Top or to the Bottom</p>
-								</div>
-								<div class="swiper-slide red-slide">
-									<h2>Slide 2</h2>
-									<p>Keep swiping</p>
-								</div>
-								<div class="swiper-slide orange-slide">
-									<h2>Slide 3</h2>
-									<p>The last one</p>
-								</div>
+								
 							</div>
 						</div>
 					</li>
@@ -338,6 +327,17 @@
 	    	</ul>
         </div>
 		<!-- TEMPLATE -->
+		<div id="aspot_item" class="template">
+			<div class="swiper-slide" idProduct=[ID]>
+				<div class="item-aspot-img">
+					<img src="[IMG]">
+				</div>
+				<div class="item-aspot-detail">
+					<h2 class="ui-li-heading">[TITLE] - $[PRICE]</h2>
+					<p class="ui-li-desc">[DES]</p>
+				</div>
+			</div>
+		</div>
 		<div id="filter_contain" class="template"></div>
 		<div id="carousel_item" class="template">
 			<li class="category-item-title" idCategory="[ID]" data-role="list-divider">
