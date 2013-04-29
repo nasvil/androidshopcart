@@ -17,8 +17,8 @@ DataHelper.prototype.getAPIDataBasic = function getAPIDataBasic(params,success,e
             data: data,
             type: method,
             dataType: 'json',
+			dataReturn: params.dataReturn,
             success: function (json) {
-			json = '[{"ID":"73","Name":"M\u1eebng sinh em b\u00e9"},{"ID":"59","Name":"Congratulatory Flowers"},{"ID":"46","Name":"Flower Of Love"},{"ID":"69","Name":"Mother\'s Day"},{"ID":"45","Name":"Condolence Flowers"},{"ID":"60","Name":"Office Flowers"},{"ID":"74","Name":"B\u00e1nh kem tr\u00e1i c\u00e2y t\u01b0\u01a1i"},{"ID":"68","Name":"Qu\u00e0 t\u1eb7ng k\u00e8m"},{"ID":"71","Name":"Just because"},{"ID":"72","Name":"Birthday"},{"ID":"70","Name":"Woman\'s Day"}]';
                 if (typeof json === 'string') {
                     result = JSON.parse(json);
                 } else {

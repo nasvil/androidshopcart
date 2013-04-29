@@ -73,20 +73,6 @@ var productDetail = [{"idCategory":"1","id":"1","price":"20","name":"Birthday Co
 					
 $(document).ready(function(){
 	console.log('$(document).ready');
-	$.support.cors = true;
-	flickerAPI = "http://api.flickr.com/services/feeds/photos_public.gne?jsoncallback=?";
-	$.getJSON( flickerAPI, {
-		tags: "mount rainier",
-		tagmode: "any",
-		format: "json"
-	}).done(function( data ) {
-			// $.each( data.items, function( i, item ) {
-				// $( "<img/>" ).attr( "src", item.media.m ).appendTo( "#images" );
-				// if ( i === 3 ) {
-				// return false;
-			// }
-			console.log(data);
-	});
 	
 	// init param
 	platform = "Android";
@@ -105,6 +91,7 @@ $(document).ready(function(){
 		elementName:'#cart_page #time-delivery'
 	});
 	utility.hideFilterItem();
+	utility.renderASpot();
 	utility.renderListCategoryToCarousel();
 });
 

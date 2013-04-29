@@ -102,10 +102,7 @@ Xhr.prototype.send = function get2(params) {
     	headers['Accept'] = acceptHeader;
     }
     this.cancelled = false;
-    
-	// getCORS('http://ucommbieber.unl.edu/CORS/cors.php', null, function(data){
-		// alert(data);
-	// });
+   
 	getCORS('http://flowercardvn.com/webservice/webservice.php?controller=category', null, function(data){
 		console.log(data);
 		success(data);
