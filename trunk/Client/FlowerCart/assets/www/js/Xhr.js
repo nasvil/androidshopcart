@@ -104,7 +104,6 @@ Xhr.prototype.send = function get2(params) {
     this.cancelled = false;
    
 	getCORS(url, null, function(data){
-		console.log(data);
 		success(data);
 	});
     /*$.ajax({
