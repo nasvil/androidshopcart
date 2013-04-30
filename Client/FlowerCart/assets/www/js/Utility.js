@@ -238,10 +238,10 @@ Utility.prototype.showFilterItem = function showFilterItem() {
 
 Utility.prototype.getCarouselItem = function getCarouselItem(item) {
 	var template=$('#carousel_item').html();
-	template=template.replace('[ID]',item.id);
-	template=template.replace('[ID]',item.id);
-	template=template.replace('[ID]',item.id);
-	template=template.replace('[NAME]',item.name);
+	template=template.replace('[ID]',item.ID);
+	template=template.replace('[ID]',item.ID);
+	template=template.replace('[ID]',item.ID);
+	template=template.replace('[NAME]',item.Name);
 	return template;
 };
 
@@ -260,11 +260,11 @@ Utility.prototype.renderArrayObject = function renderArrayObject(params,success,
 
 Utility.prototype.getItemInASpot = function getItemInCategory(item) {
 	var template=$('#aspot_item').html();
-	template=template.replace('[ID]',item.id);
-	template=template.replace('[IMG]',item.image);
-	template=template.replace('[TITLE]',item.name);
+	template=template.replace('[ID]',item.ID);
+	template=template.replace('[IMG]',item.Image);
+	template=template.replace('[TITLE]',item.Name);
 	template=template.replace('[DES]',item.shortDescription);
-	template=template.replace('[PRICE]',item.price);
+	template=template.replace('[PRICE]',item.Price);
 	return template;
 };
 
@@ -273,10 +273,9 @@ Utility.prototype.renderASpot = function renderASpot(params,success,error) {
 	utility.hideFilterItem();
 	utility.show();
 	utility.renderArrayObject({
-		url: 'aspot-page',
+		url: 'http://flowercardvn.com/webservice/webservice.php?controller=bestseller&type=bestsellerwomanday_product',
 	    isCachedLocal: false,
 	    data: "",
-		dataReturn: productListBest,
 	},function(result){
 		for(i in result){
 			$('.swiper-aspot .swiper-wrapper').append(utility.getItemInASpot(result[i]));
@@ -338,8 +337,8 @@ Utility.prototype.renderListCategoryToCarousel = function renderListCategoryToCa
 			utility.renderListProductInCategoryToCarousel({
 				idCategory: result[i].id,
 				slidesPerSlide: carousel.numberItemOnPortrait(),
-				elementName: '#product_in_category_swiper_'+result[i].id,
-				elementWrapper: '#product_in_category_'+result[i].id+' .swiper-wrapper'
+				elementName: '#product_in_category_swiper_'+result[i].ID,
+				elementWrapper: '#product_in_category_'+result[i].ID+' .swiper-wrapper'
 			});
 		}
 		$('#main-list-category').listview('refresh');
@@ -350,11 +349,11 @@ Utility.prototype.renderListCategoryToCarousel = function renderListCategoryToCa
 
 Utility.prototype.getItemInCategory = function getItemInCategory(item) {
 	var template=$('#category_item_template').html();
-	template=template.replace('[ID]',item.id);
-	template=template.replace('[IMG]',item.image);
-	template=template.replace('[TITLE]',item.name);
+	template=template.replace('[ID]',item.ID);
+	template=template.replace('[IMG]',item.Image);
+	template=template.replace('[TITLE]',item.Name);
 	template=template.replace('[DES]',item.shortDescription);
-	template=template.replace('[PRICE]',item.price);
+	template=template.replace('[PRICE]',item.Price);
 	return template;
 };
 
@@ -383,10 +382,9 @@ Utility.prototype.renderListProduct = function renderListProduct(params) {
 	$('#category_page').attr('idCategory',idCategory);
 	utility.show();
 	utility.renderArrayObject({
-		url: "get-list-product",
+		url: "http://flowercardvn.com/webservice/webservice.php?controller=product&categoryID=" + idCategory+"",
 	    isCachedLocal: false,
 	    data: "",
-		dataReturn:productList
 	},function(result){
 		for(i in result){
 			$('#listview-ul').append(utility.getItemInCategory(result[i]));
@@ -407,10 +405,10 @@ Utility.prototype.renderListProduct = function renderListProduct(params) {
 
 Utility.prototype.getProductDetail = function getProductDetail(item) {
 	var template=$('#product_metadata').html();
-	template=template.replace('[IMG]',item.image);
-	template=template.replace('[TITLE]',item.name);
+	template=template.replace('[IMG]',item.Image);
+	template=template.replace('[TITLE]',item.Name);
 	template=template.replace('[DESC]',item.Description);
-	template=template.replace('[PRICE]',item.price);
+	template=template.replace('[PRICE]',item.Price);
 	return template;
 };
 
@@ -453,15 +451,13 @@ Utility.prototype.renderGiftProduct = function renderGiftProduct(params) {
 
 Utility.prototype.renderProductDetail = function renderProductDetail(params) {
 	var idProduct = params.idProduct;
-	
 	$('#product_detail').html("");
 	utility.hideFilterItem();
 	utility.show();
 	utility.renderArrayObject({
-		url: "get-product-detail",
+		url: "http://flowercardvn.com/webservice/webservice.php?controller=detailProduct&productID="+idProduct+"",
 	    isCachedLocal: false,
 	    data: "",
-		dataReturn:productDetail
 	},function(result){
 		$('*').scrollTop(0);
 		for(i in result){

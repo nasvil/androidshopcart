@@ -103,7 +103,7 @@ Xhr.prototype.send = function get2(params) {
     }
     this.cancelled = false;
    
-	getCORS('http://flowercardvn.com/webservice/webservice.php?controller=category', null, function(data){
+	getCORS(url, null, function(data){
 		console.log(data);
 		success(data);
 	});
