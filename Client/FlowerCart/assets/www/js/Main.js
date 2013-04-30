@@ -13,7 +13,9 @@ var PAGE = {
 	devTy="mobile",
 	cart,
 	currentProductClick,
-	platform;
+	platform,
+	settings,
+	api;
 
 //config jquery mobile
 $(document).bind("mobileinit", function(){
@@ -75,8 +77,17 @@ $(document).ready(function(){
 	console.log('$(document).ready');
 	
 	// init param
+	/*********************************************/
+	settings = new Settings({
+		"urls.postercdnurl": "http://flowercardvn.com/image/cache/",
+		"urls.publicBaseUrl": "http://flowercardvn.com/",
+		"urls.proxyBaseUrl": "http://flowercardvn.com/",
+		"urls.apiBaseUrl": "http://flowercardvn.com/webservice/",
+		"urls.signupUrl": "",
+	});
 	platform = "Android";
 	popup=new Popup();
+	api = new ApiUrl();
 	utility=new Utility(Utility.deviceFactory(devTy));
 	utility.getDeviceType();
 	dataHelper=new DataHelper();

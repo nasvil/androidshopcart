@@ -19,3 +19,4 @@ Settings.prototype.set = function set() {
 Settings.prototype.get = function get(name) {
     return this.map[name];
 };
+
