@@ -115,56 +115,59 @@ $('#category_page').live('pagehide', function () {
 });
 
 $('#category_page').live('pageshow', function () {
-	console.log('category_page');
-	try{
+	// console.log('category_page');
+	// try{
 		utility.showFilterItem();
-		var idCategory = $('#category_page').attr('idCategory');
-		if(isNaN(idCategory)){
-			var idCategory_product = $('#product_page').attr('idCategory');
-			if(isNaN(idCategory_product)){
-				utility.renderListProduct({
-					idCategory: idCategory_product
-				});
-			}else{
-				window.location = $('base').attr('href');
-			}
-		}else{
-			utility.renderListProduct({
-				idCategory: idCategory
-			});
-		}	
-	}catch(err){
-		window.location = $('base').attr('href');
-	}
+		// var idCategory = $('#category_page').attr('idCategory');
+		// if(isNaN(idCategory)){
+			// var idCategory_product = $('#product_page').attr('idCategory');
+			// if(isNaN(idCategory_product)){
+				// utility.renderListProduct({
+					// idCategory: idCategory_product
+				// });
+			// }else{
+				// window.location = $('base').attr('href');
+			// }
+		// }else{
+			// utility.renderListProduct({
+				// idCategory: idCategory
+			// });
+		// }	
+	// }catch(err){
+		// window.location = $('base').attr('href');
+	// }
+	utility.hide();
 });
 
 $('#product_page').live('pageshow', function () {
-	console.log('product_page');
-	try{
-		var idProduct = $('#product_page').attr('idProduct');
-		var idCategory = $('#product_page').attr('idCategory');
-		if(isNaN(idProduct)){
-			if(isNaN(idCategory)){
-				utility.renderListProduct({
-					idCategory: idCategory
-				});
-			}else{
-				window.location = $('base').attr('href');
-			}
-		}else{
-			utility.renderProductDetail({
-				idProduct: idProduct
-			});
-		}
-	}catch(err){
-		window.location = $('base').attr('href');
-	}
+	// console.log('product_page');
+	// try{
+		// var idProduct = $('#product_page').attr('idProduct');
+		// var idCategory = $('#product_page').attr('idCategory');
+		// if(isNaN(idProduct)){
+			// if(isNaN(idCategory)){
+				// utility.renderListProduct({
+					// idCategory: idCategory
+				// });
+			// }else{
+				// window.location = $('base').attr('href');
+			// }
+		// }else{
+			// utility.renderProductDetail({
+				// idProduct: idProduct
+			// });
+		// }
+	// }catch(err){
+		// window.location = $('base').attr('href');
+	// }
+	utility.hide();
 });
 
 $('#cart_page').live('pageshow', function () {
 	// utility.hideFilterItem();
-	utility.renderProductInCart();
-	console.log('cart_page');
+	// utility.renderProductInCart();
+	// console.log('cart_page');
+	utility.hide();
 });
 
 $('#main_page').live('pageshow', function () {
@@ -175,10 +178,9 @@ $('#main_page').live('pageshow', function () {
 	}catch(err){
 		
 	}
+	try{
+		utility.hide();
+	}catch(err){
+		
+	}
 });
-
-function testGet()
-{
-    // getCORS('http://ucommbieber.unl.edu/CORS/cors.php', null, function(data){alert(data);});
-	getCORS('http://demo.ganeshbabujayaraman.com/capitals-json-cors.php', null, function(data){alert(data);});
-}

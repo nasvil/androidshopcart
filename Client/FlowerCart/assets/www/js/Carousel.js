@@ -58,7 +58,6 @@ Carousel.prototype.drawCarousel = function drawCarousel(params) {
 Carousel.prototype.resizeFix = function resizeFix() {
 	for(i in carousel.carouselName){
 		try{
-			console.log('Carousel.prototype.resizeFix : '+i);
 			carousel.listCarousel[carousel.carouselName[i]].resizeFix();
 		}catch(err){
 		}

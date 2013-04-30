@@ -212,6 +212,17 @@ Utility.prototype.hide = function hide() {
 	$.mobile.hidePageLoadingMsg();
 };
 
+Utility.prototype.realPrice = function realPrice(price) {
+	try{
+		if(price.length <= 3){
+			return parseInt(price);
+		}
+		return parseInt(price.toString().substring(0,price.toString().indexOf('.')));
+	}catch(err){
+		return parseInt(price);
+	}
+};
+
 Utility.prototype.createDateTimePicker = function createDateTimePicker(params) {
 	var elementName = params.elementName,
 		theme = params.theme ? params.theme : 'android-ics light',
@@ -247,10 +258,10 @@ Utility.prototype.getCarouselItem = function getCarouselItem(item) {
 
 Utility.prototype.getCarouselSlideItem = function getCarouselSlideItem(item) {
 	var template=$('#carousel_slide_item').html();
-	template=template.replace('[ID]',item.id);
-	template=template.replace('[IMG]',item.image);
-	template=template.replace('[TITLE]',item.name);
-	template=template.replace('[PRICE]',item.price);
+	template=template.replace('[ID]',item.ID);
+	template=template.replace('[IMG]',item.Image);
+	template=template.replace('[TITLE]',item.Name);
+	template=template.replace('[PRICE]',utility.realPrice(item.Price));
 	return template;
 };
 
@@ -263,8 +274,8 @@ Utility.prototype.getItemInASpot = function getItemInCategory(item) {
 	template=template.replace('[ID]',item.ID);
 	template=template.replace('[IMG]',item.Image);
 	template=template.replace('[TITLE]',item.Name);
-	template=template.replace('[DES]',item.shortDescription);
-	template=template.replace('[PRICE]',item.Price);
+	template=template.replace('[DES]',"");
+	template=template.replace('[PRICE]',utility.realPrice(item.Price));
 	return template;
 };
 
@@ -280,7 +291,6 @@ Utility.prototype.renderASpot = function renderASpot(params,success,error) {
 		for(i in result){
 			$('.swiper-aspot .swiper-wrapper').append(utility.getItemInASpot(result[i]));
 		}
-		// ('#main-promotion').listview('refresh');
 		carousel.drawCarousel({
 			elementName: '.swiper-aspot',
 			mode: carousel.horizontal,
@@ -301,14 +311,19 @@ Utility.prototype.renderListProductInCategoryToCarousel = function renderListPro
 		elementWrapper = params.elementWrapper;
 	
 	utility.show();
+	api.setBaseUrl(api.apiList.productInCategory);
 	utility.renderArrayObject({
-		url: "get-list-product-in-category",
+		url: api.getUrl()+"&categoryID="+idCategory,
 		isCachedLocal: false,
-		data: "{idcategory:,"+idCategory+"}",
-		dataReturn:productList
+		data: "{idcategory:,"+idCategory+"}"
 	},function(result){
 		for(i in result){
 			$(elementWrapper).append(utility.getCarouselSlideItem(result[i]));
+		}
+		var r = result.length;
+		while(r <= slidesPerSlide && r > 0){
+			$(elementWrapper).append(utility.getCarouselSlideItem(result[0]));
+			r++;
 		}
 		carousel.drawCarousel({
 			elementName: elementName,
@@ -335,7 +350,7 @@ Utility.prototype.renderListCategoryToCarousel = function renderListCategoryToCa
 			$('#main-list-category').append(utility.getCarouselItem(result[i]));
 			utility.show();
 			utility.renderListProductInCategoryToCarousel({
-				idCategory: result[i].id,
+				idCategory: result[i].ID,
 				slidesPerSlide: carousel.numberItemOnPortrait(),
 				elementName: '#product_in_category_swiper_'+result[i].ID,
 				elementWrapper: '#product_in_category_'+result[i].ID+' .swiper-wrapper'
@@ -352,8 +367,8 @@ Utility.prototype.getItemInCategory = function getItemInCategory(item) {
 	template=template.replace('[ID]',item.ID);
 	template=template.replace('[IMG]',item.Image);
 	template=template.replace('[TITLE]',item.Name);
-	template=template.replace('[DES]',item.shortDescription);
-	template=template.replace('[PRICE]',item.Price);
+	template=template.replace('[DES]',"");
+	template=template.replace('[PRICE]',utility.realPrice(item.Price));
 	return template;
 };
 
@@ -382,7 +397,7 @@ Utility.prototype.renderListProduct = function renderListProduct(params) {
 	$('#category_page').attr('idCategory',idCategory);
 	utility.show();
 	utility.renderArrayObject({
-		url: "http://flowercardvn.com/webservice/webservice.php?controller=product&categoryID=" + idCategory+"",
+		url: "http://flowercardvn.com/webservice/webservice.php?controller=product&categoryID=" + idCategory,
 	    isCachedLocal: false,
 	    data: "",
 	},function(result){
@@ -396,8 +411,9 @@ Utility.prototype.renderListProduct = function renderListProduct(params) {
 			$('#trigger_click_item a').eq(2).click();
 		}
 		$('#category_page #btnMore').button();
+		$('#category_page #btnMore').parent().parent().css('visibility','hidden');
 		$('#listview-ul').listview('refresh');
-		utility.hide();
+		// utility.hide();
 	},function(req, status, e){
 		
 	});
@@ -405,10 +421,10 @@ Utility.prototype.renderListProduct = function renderListProduct(params) {
 
 Utility.prototype.getProductDetail = function getProductDetail(item) {
 	var template=$('#product_metadata').html();
-	template=template.replace('[IMG]',item.Image);
-	template=template.replace('[TITLE]',item.Name);
-	template=template.replace('[DESC]',item.Description);
-	template=template.replace('[PRICE]',item.Price);
+	template=template.replace('[IMG]',item.image);
+	template=template.replace('[TITLE]',item.name);
+	template=template.replace('[DESC]',item.description);
+	template=template.replace('[PRICE]',utility.realPrice(item.price));
 	return template;
 };
 
@@ -428,20 +444,20 @@ Utility.prototype.getProductMoreLikeThis = function getProductMoreLikeThis(item)
 };
 
 Utility.prototype.renderGiftProduct = function renderGiftProduct(params) {
-	var data = params.gift,
+	var data = params.gift.option,
 		temp = $('#product_option_gift').html(),
 		iTemp = "",
 		items = "";
-	
+		
 	if(data && data !== undefined){
-		for(var i=1; i < 5; i++){
+		for(var i=0; i < data.length; i++){
 			iTemp = $('#product_option_gift_item').html();
 			iTemp = iTemp.replace('[ID]','item-'+i);
 			iTemp = iTemp.replace('[ID]','item-'+i);
 			iTemp = iTemp.replace('[ID]','item-'+i);
 			iTemp = iTemp.replace('[PRICE]',(i*5));
 			iTemp = iTemp.replace('[IDP]',(i*50));
-			iTemp = iTemp.replace('[NAME]','item '+i);
+			iTemp = iTemp.replace('[NAME]',data[i].name);
 			items += iTemp;
 		}
 		temp = temp.replace('[GIFT_ITEM]',items);
@@ -455,23 +471,22 @@ Utility.prototype.renderProductDetail = function renderProductDetail(params) {
 	utility.hideFilterItem();
 	utility.show();
 	utility.renderArrayObject({
-		url: "http://flowercardvn.com/webservice/webservice.php?controller=detailProduct&productID="+idProduct+"",
+		url: "http://flowercardvn.com/webservice/webservice.php?controller=detailProduct&productID="+idProduct,
 	    isCachedLocal: false,
 	    data: "",
 	},function(result){
 		$('*').scrollTop(0);
-		for(i in result){
-			$('#product_detail').append(utility.getProductDetail(result[i]));
-		}
+		console.log(result);
+		$('#product_detail').append(utility.getProductDetail(result));
 		$('#product_page').attr('idProduct',idProduct);
-		$('#product_page').attr('price',result[0].price);
-		$('#product_page').attr('linkShare',result[0].shareURL);
-		$('#product_page').attr('productName',result[0].name);
-		$('#product_page').attr('idCategory',result[0].idCategory);
+		$('#product_page').attr('price',utility.realPrice(result.price));
+		$('#product_page').attr('linkShare',result.shareURL);
+		$('#product_page').attr('productName',result.name);
+		$('#product_page').attr('idCategory',result.idCategory);
 		utility.renderGiftProduct({
-			gift: []
+			gift: result.option.Gift[0]
 		});
-		$('#product_detail').append(utility.getProductOptions(result[0]));
+		$('#product_detail').append(utility.getProductOptions(result));
 		$('#trigger_click_item a').eq(0).click();
 		$('#product_detail').listview('refresh');
 		try{
@@ -479,7 +494,7 @@ Utility.prototype.renderProductDetail = function renderProductDetail(params) {
 		}catch(err){
 			console.log(err);
 		}
-		utility.hide();
+		
 	},function(req, status, e){
 		
 	});
@@ -514,7 +529,7 @@ Utility.prototype.renderProductMoreLikeThis = function renderProductMoreLikeThis
 			$('#product_detail_more #item-wrapper').append(utility.getProductMoreLikeThis(result[i]));
 		}
 		utility.setPrositionListItemMore();
-		utility.hide();
+		// utility.hide();
 	},function(req, status, e){
 		
 	});
