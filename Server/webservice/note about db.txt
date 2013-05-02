@@ -1,3 +1,0 @@
-option_description -----> option_value_description---> option_value(image)
-option_description ----> gc_option
-option_description---->product_option
