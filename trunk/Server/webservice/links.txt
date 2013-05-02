@@ -1,0 +1,7 @@
+<?php
+    /*http://flowercardvn.com/webservice/webservice.php?controller=shoppingcart&method=getBasket&customername=user
+    http://flowercardvn.com/webservice/webservice.php?controller=category
+    http://flowercardvn.com/webservice/webservice.php?controller=product&categoryID=59
+    http://flowercardvn.com/webservice/webservice.php?controller=detailProduct&productID=270
+    http://flowercardvn.com/webservice/webservice.php?controller=bestseller&type=bestsellerwomanday_product
+?>
