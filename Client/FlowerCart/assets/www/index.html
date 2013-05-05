@@ -6,15 +6,17 @@
 		<title>index</title>
 		<link rel="stylesheet" href="css/jquery.mobile-1.3.0.css" />
 		<link rel="stylesheet" href="css/idangerous.swiper.css">
-		<link rel="stylesheet"  href="css/mobiscroll.custom-2.4.5.min.css"/>
+		<link rel="stylesheet" href="css/mobiscroll.custom-2.4.5.min.css"/>
 		<link rel="stylesheet" href="css/css.css" />
+		<link rel="stylesheet" href="css/jquery.fancybox.css" media="screen" />
 		
 		<script src="js/lib/jquery-1.8.2.min.js"></script>
 		<script src="js/lib/idangerous.swiper-1.8.min.js"></script>
 		<script src="js/lib/jquery.mobile-1.3.0.min.js"></script>
 		<script src="js/lib/mobiscroll.custom-2.4.5.min.js"></script>
 		<script src="js/lib/cors.js"></script>
-
+		<script src="js/lib/jquery.fancybox.js"></script>
+	
 		<script src="js/Settings.js"></script>
 		<script src="js/Cookies.js"></script>
 		<script src="js/LocalStores.js"></script>
@@ -67,7 +69,7 @@
 					<li><a href="#panel-fixed-page2">Anatomy of a page</a></li>
 				</ul>
 			</div><!-- /panel -->
-			
+			<a style="padding:50px;display:block" class="fancybox fancybox.iframe" href="iframe.html">Iframe</a>
 			<div data-theme="c" data-role="footer" data-position="fixed" data-tap-toggle="false">
 				<div data-role="navbar" data-iconpos="right">
 					<ul>
@@ -143,6 +145,24 @@
 						More
 					</li>
 				</ul>
+			</div>
+			<div id="paypal_checkout_form" data-role="none">
+				<form method="post" action="https://www.paypal.com/cgi-bin/webscr" class="paypal-button" target="_top" style="opacity: 1;">
+					<input type="hidden" name="button" value="cart">
+					<input type="hidden" name="business" value="acracy.nguyen@gmail.com">
+					<input type="hidden" name="item_name" value="[PRODUCT]">
+					<input type="hidden" name="quantity" value="1">
+					<input type="hidden" name="amount" value="5">
+					<input type="hidden" name="currency_code" value="USD">
+					<input type="hidden" name="shipping" value="0">
+					<input type="hidden" name="tax" value="0">
+					<input type="hidden" name="notify_url" value="">
+					<input type="hidden" name="cmd" value="_cart">
+					<input type="hidden" name="add" value="true">
+					<input type="hidden" name="bn" value="JavaScriptButton_cart">
+					<input type="hidden" name="env" value="www">
+					<button type="submit" class="paypal-button large">Add to Cart</button>
+				</form>
 			</div>
 			<!-- /panel -->
 			<div data-role="panel" data-display="overlay" data-position-fixed="true" data-theme="c" id="nav-panel" data-position="right">
@@ -244,7 +264,6 @@
 							</div>
 						</div>
 					</li>
-					
 				</ul>
 			</div>
 			<!-- /panel -->
@@ -454,7 +473,35 @@
 				<td><a id="remove-product-from-cart" href="">Remove</a></td>
 			</tr>
 		</div>
-			
+		
+		<div id="paypal_form" class="template">
+			<form method="post" action="https://www.paypal.com/cgi-bin/webscr" class="paypal-button" target="_top">
+				<input type="hidden" name="button" value="cart">
+				<input type="hidden" name="business" value="[ACCOUNT]">
+				<input type="hidden" name="item_name" value="[PRODUCT]">
+				<input type="hidden" name="quantity" value="[QUANTITY]">
+				<input type="hidden" name="amount" value="[PRICE]">
+				<input type="hidden" name="currency_code" value="USD">
+				<input type="hidden" name="shipping" value="0">
+				<input type="hidden" name="tax" value="0">
+				<input type="hidden" name="notify_url" value="">
+				<input type="hidden" name="cmd" value="_cart">
+				<input type="hidden" name="add" value="true">
+				<input type="hidden" name="bn" value="JavaScriptButton_cart">
+				<input type="hidden" name="env" value="www">
+				<button type="submit" class="paypal-button large">Add to Cart</button>
+			</form>
+		</div>
+		
+		<div id="paypal_form_show" class="template">
+			<form data-role="none" action="https://www.paypal.com/cgi-bin/webscr" method="post" id="view">
+				<input type="hidden" name="business" value="acracy.nguyen@gmail.com" />
+				<input type="hidden" name="cmd" value="_cart" />
+				<input type="hidden" name="display" value="1" />
+				<input data-role="none" type="submit" value="show" />
+			</form>
+		</div>
+			<script src="js/lib/minicart.js"></script>
 		<!-- END TEMPLATE -->
 	</body>
 </html>

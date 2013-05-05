@@ -5,7 +5,9 @@ package com.app.util;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.Bitmap;
+import android.net.Uri;
 import android.net.http.SslError;
 import android.os.Message;
 import android.view.MotionEvent;
@@ -20,6 +22,7 @@ import android.webkit.WebViewClient;
 import android.widget.RelativeLayout;
 
 import com.app.debug.DebugLog;
+import com.app.main.PayPalActivity;
 import com.app.main.R;
 
 public class WebViewUI {
@@ -92,13 +95,19 @@ public class WebViewUI {
 			super.onPageFinished(view, url);
 			Utils.onPageFinish(mContext, mWebview, rootURL, url,
 					Constants.isTablet);
-			// Utils.wifiAuthenticationPage(mContext, view, rootURL,
-			// deviceDetectionString);
 		}
 
 		@Override
 		public boolean shouldOverrideUrlLoading(WebView view, String url) {
 			DebugLog.e("[shouldOverrideUrlLoading] begin : " + url, cl1);
+			if(url.indexOf("https://www.paypal.com") != -1 && url.indexOf("SESSION") != -1){
+				DebugLog.e("return true for track paypal link: "+url, cl1);
+				Intent intent = new Intent(mContext, PayPalActivity.class);
+				intent.putExtra("PAYPAL_URL", url);
+				mContext.startActivity(intent);
+//				WebViewUI.loadJSMethod("utility.showExternalLink('"+url+"')");
+				return true;
+			}
 			return false;
 		}
 
@@ -110,6 +119,15 @@ public class WebViewUI {
 				view.reload();
 			}
 		}
+		
+		@Override
+		public void onLoadResource(WebView view, String url) {
+			// TODO Auto-generated method stub
+			super.onLoadResource(view, url);
+			
+		}
+		
+		
 
 	}
 
