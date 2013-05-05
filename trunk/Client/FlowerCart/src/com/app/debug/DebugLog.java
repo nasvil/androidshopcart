@@ -9,7 +9,7 @@ public class DebugLog {
 	private static final boolean DEBUG = true;
 	private static final boolean ERROR = true;
 	private static final boolean INFO = true;
-	private static final String DEBUG_TAG = "SonTruong";
+	private static final String DEBUG_TAG = "Thinh.Nguyen";
 
 	// private static final DateFormat dateFormat = new SimpleDateFormat(
 	// "MM/dd HH:mm");

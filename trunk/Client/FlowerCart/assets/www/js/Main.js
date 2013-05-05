@@ -15,7 +15,8 @@ var PAGE = {
 	currentProductClick,
 	platform,
 	settings,
-	api;
+	api,
+	miniCartId = "paypalCart";
 
 //config jquery mobile
 $(document).bind("mobileinit", function(){
@@ -84,7 +85,9 @@ $(document).ready(function(){
 		"urls.proxyBaseUrl": "http://flowercardvn.com/",
 		"urls.apiBaseUrl": "http://flowercardvn.com/webservice/",
 		"urls.signupUrl": "",
+		"paypals.account": "acracy.nguyen@gmail.com"
 	});
+	$('.fancybox').fancybox();
 	platform = "Android";
 	popup=new Popup();
 	api = new ApiUrl();
@@ -92,9 +95,30 @@ $(document).ready(function(){
 	utility.getDeviceType();
 	dataHelper=new DataHelper();
 	carousel=new Carousel(Carousel.deviceFactory(devTy));
+	utility.cookies.remove('PPMiniCart');
+	utility.cookies.remove('cart');
 	cache=new Cache();
 	cart= new Cart();
 	cart.getFromLocal();
+	PAYPAL.apps.MiniCart.render({
+		assetURL: '../',
+		name: miniCartId,
+		events: {
+			onRender: cart.onRender,
+			afterRender: cart.afterRender,
+			onHide: cart.onHide,
+			afterHide: cart.afterHide,
+			onShow: cart.onShow,
+			afterShow: cart.afterShow,
+			onAddToCart: cart.onAddToCart,
+			afterAddToCart: cart.afterAddToCart,
+			onRemoveFromCart: cart.onRemoveFromCart,
+			afterRemoveFromCart: cart.afterRemoveFromCart,
+			onCheckout: cart.onCheckout,
+			onReset: cart.onReset,
+			afterReset: cart.afterReset
+		}
+	});
 	
 	//
 	utility.loadGeneralActions();

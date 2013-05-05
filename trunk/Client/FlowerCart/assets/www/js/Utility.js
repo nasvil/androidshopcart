@@ -146,6 +146,7 @@ Utility.prototype.loadGeneralActions = function loadGeneralActions() {
 			idProduct: idProduct
 		});
     });
+    
     $('#zoom_out').live('click',function(){
     	var i = $(this).parent().children().eq(0);
     	var w = $(i).find('img').eq(0).width() + 200;
@@ -159,6 +160,12 @@ Utility.prototype.loadGeneralActions = function loadGeneralActions() {
     	console.log(w);
     	$(i).css('width',w);
     });
+    
+    $('#cart_page .android-ics').live('click',function(){
+//    	utility.publishPayment();
+    	$('#paypal_form_show input[type=submit]').click();
+    });
+    
 };
 
 Utility.prototype.getDeviceType = function getDeviceType() {
@@ -425,6 +432,7 @@ Utility.prototype.getProductDetail = function getProductDetail(item) {
 	template=template.replace('[TITLE]',item.name);
 	template=template.replace('[DESC]',item.description);
 	template=template.replace('[PRICE]',utility.realPrice(item.price));
+	
 	return template;
 };
 
@@ -478,6 +486,8 @@ Utility.prototype.renderProductDetail = function renderProductDetail(params) {
 		$('*').scrollTop(0);
 		console.log(result);
 		$('#product_detail').append(utility.getProductDetail(result));
+		utility.createItemPayment(result);
+		
 		$('#product_page').attr('idProduct',idProduct);
 		$('#product_page').attr('price',utility.realPrice(result.price));
 		$('#product_page').attr('linkShare',result.shareURL);
@@ -602,6 +612,33 @@ Utility.prototype.hideExitAppButton = function hideExitAppButton(){
 
 Utility.prototype.releaseFocus = function releaseFocus(){
 	$('input').focusout();
+};
+
+
+Utility.prototype.publishPayment = function publishPayment() {
+	miniCartId + '=reset';
+	utility.createPayment();
+};
+
+Utility.prototype.createPayment = function createPayment() {
+	for( var i = 0 ; i < cart.data.length ; i++ ){
+		$('#paypal_checkout_form').append(utility.createItemPayment(cart.data[i]));
+		$('#paypal_checkout_form form').eq(i).submit();
+	}
+};
+
+Utility.prototype.createItemPayment = function createItemPayment(item) {
+	
+	$('#paypal_checkout_form input[name=item_name]').val(item.name);
+	$('#paypal_checkout_form input[name=business]').val(settings.get('paypals.account'));
+	$('#paypal_checkout_form input[name=quantity]').val(1);
+	$('#paypal_checkout_form input[name=amount]').val(utility.realPrice(item.price));
+};
+
+Utility.prototype.showExternalLink = function showExternalLink(link) {
+	console.log('showExternalLink: '+link);
+	$('.fancybox').attr('href',link);
+	$('.fancybox').click();
 };
 
 

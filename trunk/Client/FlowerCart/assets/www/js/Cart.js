@@ -90,3 +90,74 @@ Cart.prototype.getFromLocal = function getFromLocal(){
 	}
 	
 };
+
+/*PAYPAL-IMPLEMENT*****************************************/
+
+Cart.prototype.onRender = function onRender() {
+	console.log('onRender');
+};
+
+Cart.prototype.afterRender = function afterRender() {
+	console.log('afterRender');
+};
+
+Cart.prototype.onHide = function onHide(e) {
+	console.log('onHide');
+};
+
+Cart.prototype.afterHide = function afterHide(e) {
+	console.log('afterHide');
+};
+
+Cart.prototype.onShow = function onShow(e) {
+	console.log('onShow');
+};
+
+Cart.prototype.afterShow = function afterShow(e) {
+	console.log('afterShow');
+};
+
+Cart.prototype.onAddToCart = function onAddToCart(obj) {
+	console.log('onAddToCart');
+};
+
+Cart.prototype.afterAddToCart = function afterAddToCart(obj) {
+	console.log('afterAddToCart');
+};
+
+Cart.prototype.onRemoveFromCart = function onRemoveFromCart(obj) {
+	console.log('onCheckout');
+};
+
+Cart.prototype.afterRemoveFromCart = function afterRemoveFromCart(obj) {
+	console.log('afterRemoveFromCart');
+};
+
+Cart.prototype.onCheckout = function onCheckout(e) {
+	console.log('onCheckout');
+};
+
+Cart.prototype.onReset = function onReset() {
+	console.log('onReset');
+};
+
+Cart.prototype.afterReset = function afterReset() {
+	console.log('afterReset');
+};
+
+Cart.prototype.userAddProducts = function userAddProducts(cart) {
+	console.log('userAddProducts');
+}
+
+Cart.prototype.userRemoveProducts = function userRemoveProducts(cart) {
+	console.log('userRemoveProducts');
+}
+
+Cart.prototype.fakeEvent = function fakeEvent(el, type) {
+	console.log('fakeEvent');
+}
+
+Cart.prototype.isCartShowing = function isCartShowing() {
+	console.log('isCartShowing');
+	return (parseInt(PAYPAL.apps.MiniCart.UI.cart.style.top, 10) === 0);
+}
